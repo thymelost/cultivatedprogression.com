@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultivated Progression — Systems That Enable Mastery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #151515;
+            --text-primary: #e8e8e8;
+            --text-secondary: #999;
+            --accent: #d4af37;
+            --accent-dim: #8b7728;
+            --border: #2a2a2a;
+        }
+
+        body {
+            font-family: 'Newsreader', Georgia, serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Animated gradient background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(
+                ellipse at 20% 30%, 
+                rgba(212, 175, 55, 0.03) 0%, 
+                transparent 50%
+            ),
+            radial-gradient(
+                ellipse at 80% 70%, 
+                rgba(212, 175, 55, 0.02) 0%, 
+                transparent 50%
+            );
+            animation: drift 30s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(5%, -5%) rotate(2deg); }
+            66% { transform: translate(-5%, 5%) rotate(-2deg); }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            padding: 3rem 0 2rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 4rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 4rem 0 6rem;
+            animation: fadeIn 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-style: normal;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 42rem;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        /* Work sections */
+        .work {
+            display: grid;
+            gap: 0;
+            margin: 6rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .work-item {
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            animation: slideUp 0.6s ease-out forwards;
+        }
+
+        .work-item:nth-child(1) { animation-delay: 0.4s; }
+        .work-item:nth-child(2) { animation-delay: 0.6s; }
+        .work-item:nth-child(3) { animation-delay: 0.8s; }
+        .work-item:nth-child(4) { animation-delay: 1.0s; }
+        .work-item:nth-child(5) { animation-delay: 1.2s; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .work-item:hover {
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.02), transparent);
+        }
+
+        .work-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-dim);
+            margin-bottom: 1rem;
+        }
+
+        .work-item h2 {
+            font-size: 1.75rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .work-item p {
+            color: var(--text-secondary);
+            max-width: 38rem;
+            line-height: 1.8;
+        }
+
+        /* Approach section */
+        .approach {
+            margin: 8rem 0;
+            padding: 4rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out 1s both;
+        }
+
+        .approach::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0.3;
+        }
+
+        .approach h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .principle {
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .principle:nth-child(1) { animation-delay: 1.2s; }
+        .principle:nth-child(2) { animation-delay: 1.4s; }
+        .principle:nth-child(3) { animation-delay: 1.6s; }
+
+        .principle h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .principle p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 6rem 0 4rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            animation: fadeIn 0.8s ease-out 1.8s both;
+        }
+
+        .contact h3 {
+            font-size: 1.75rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .email {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--accent-dim);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .email:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .approach {
+                padding: 2rem 1.5rem;
+            }
+
+            .approach-grid {
+                gap: 2rem;
+            }
+        }
+
+        /* Document links */
+        .doc-link {
+            display: inline-block;
+            margin-top: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--accent-dim);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .doc-link:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--accent);
+            transform: translateX(4px);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">CULTIVATED PROGRESSION</div>
+        </header>
+
+        <section class="hero">
+            <h1>Systems that create the <span class="highlight">conditions</span> for mastery to emerge.</h1>
+            <p class="subtitle">
+                We design platforms and frameworks that enable genuine progression by removing artificial constraints and cultivating the environment where capability naturally develops.
+            </p>
+        </section>
+
+        <section class="work">
+            <div class="work-item">
+                <div class="work-label">Adaptive Learning / Education</div>
+                <h2>Mastery-Based Education Platform</h2>
+                <p>
+                    An adaptive learning system targeting the K-12 homeschool market, secondary education, and adult learning that validates mastery through empirical retention testing at spaced intervals. The system automatically adjusts to the learning style best suited to the student. Students progress only when they demonstrate true understanding, with multiple pedagogical pathways and content sourced from proven curricula. The platform doesn't teach—it cultivates the conditions where learning compounds naturally.
+                </p>
+                <a href="docs/adaptive-learning-platform.pdf" class="doc-link">View Details →</a>
+            </div>
+
+            <div class="work-item">
+                <div class="work-label">Cognitive Optimization</div>
+                <h2>Mental Performance Training</h2>
+                <p>
+                    A neuroscience-based system for developing cognitive autonomy and sustained focus. Built on structured progression through attention training, emotional regulation, and metacognitive awareness. Rather than imposing focus, it cultivates the capacity for self-directed mental performance through deliberate practice and validation.
+                </p>
+                <a href="docs/mental-performance-training.pdf" class="doc-link">View Details →</a>
+            </div>
+
+            <div class="work-item">
+                <div class="work-label">Fusion Energy</div>
+                <h2>Magnetic Confinement Design</h2>
+                <p>
+                    Research and development of novel magnetic field topologies for compact, steady-state fusion reactors. Exploring alternative confinement geometries that challenge conventional tokamak constraints, cultivating stable plasma conditions through systematic design space investigation. Engineering the environment where fusion becomes practical.
+                </p>
+                <a href="docs/fusion-energy-research.pdf" class="doc-link">View Details →</a>
+            </div>
+
+            <div class="work-item">
+                <div class="work-label">Industrial Automation</div>
+                <h2>Continuous-Flow Fiber Processing</h2>
+                <p>
+                    Patent-pending system for automating flax fiber processing from retting through spinning-ready output. Eliminates manual labor bottlenecks through roller cascade breaking, retractable comb handoff mechanisms, and internal press debris displacement. Continuous flow architecture enables 10–50 kg/hour throughput while maintaining fiber quality. Engineering industrial processes that remove the human constraint without compromising the product.
+                </p>
+                <a href="docs/fiber-processing-overview.pdf" class="doc-link">View Details → (Overview)</a>
+            </div>
+
+            <div class="work-item">
+                <div class="work-label">Robotics</div>
+                <h2>Maintainable Android Architecture</h2>
+                <p>
+                    First-principles robotics design using layered artificial muscle ensembles rather than singular actuators. Fiber bundles arranged at varying angles and force ratios enable complex dexterous movement through ensemble coordination, mirroring biological muscle architecture. Three-tier federated power system, hardware-enforced safety interrupts independent of software state, and replaceable component libraries prioritize graceful degradation over autonomy. Engineering for predictable service life and field maintenance rather than self-repair complexity.
+                </p>
+                <a href="docs/android-robotics-overview.pdf" class="doc-link">View Details → (Overview)</a>
+            </div>
+        </section>
+
+        <section class="approach">
+            <h3>Core Principles</h3>
+            <div class="approach-grid">
+                <div class="principle">
+                    <h4>Question Inherited Constraints</h4>
+                    <p>Many boundaries are artifacts of historical convenience, not natural limits. We identify and remove artificial constraints that prevent genuine progress.</p>
+                </div>
+                <div class="principle">
+                    <h4>Design Conditions, Not Outcomes</h4>
+                    <p>Mastery, capability, and breakthrough cannot be forced. We engineer the environment and systems where they emerge naturally through proper cultivation.</p>
+                </div>
+                <div class="principle">
+                    <h4>Validate Empirically</h4>
+                    <p>Claims require evidence. Whether in learning retention, cognitive performance, or plasma confinement—progression must be measured and verified, not assumed.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact">
+            <h3>Let's build systems that enable real progress.</h3>
+            <a href="/cdn-cgi/l/email-protection#254f5056514c4b65465049514c534451404155574a42574056564c4a4b0b464a48" class="email"><span class="__cf_email__" data-cfemail="89e3fcfafde0e7c9eafce5fde0ffe8fdecedf9fbe6eefbecfafae0e6e7a7eae6e4">[email&#160;protected
