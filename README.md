@@ -8,7 +8,8 @@ Portfolio website for Cultivated Progression — a research and development orga
 
 - `index.html` — Main landing page (single-page static site)
 - `wrangler.jsonc` — Cloudflare Pages / Workers deployment config
-- `docs/` — Project documentation (PDF format)
+- `docs/` — Project documentation and theoretical papers (PDF format)
+- `observations/` — Long-form essays rendered as HTML
 
 ## Projects
 
@@ -59,6 +60,26 @@ Bowed piano — electromechanical keyboard instrument that replaces hammers with
 ### Fusion Energy
 Research into novel magnetic confinement topologies for compact, steady-state fusion reactors.
 - `docs/fusion-energy-research.pdf`
+
+## Observations
+
+Long-form essays on cultural and social patterns, rendered as HTML.
+
+### The Hollowing
+How modern cultural mechanisms quietly dismantle the social technologies that hold civilizations together.
+- `observations/the-hollowing.html`
+
+### The Architecture of Home
+The origin, strength, and unraveling of the traditional family structure.
+- `observations/the-architecture-of-home.html`
+
+## Theoretical Notes
+
+Speculative theoretical papers from first principles, distributed as PDFs.
+
+### Examining the Foundations of Translational Symmetry via Observable Invariance
+Diagnostic analysis of translational symmetry as a possibly emergent, scale-dependent property rather than a fundamental one.
+- `docs/translational-symmetry.pdf`
 
 ## Deployment
 

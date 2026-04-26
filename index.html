@@ -123,11 +123,28 @@
         }
 
         /* Work sections */
-        .work {
+        .work,
+        .writing {
             display: grid;
             gap: 0;
             margin: 6rem 0;
             border-top: 1px solid var(--border);
+        }
+
+        .section-heading {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            margin: 6rem 0 0;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-heading + .writing {
+            margin-top: 0;
+            border-top: none;
         }
 
         .work-item {
@@ -438,6 +455,39 @@
                     Research and development of novel magnetic field topologies for compact, steady-state fusion reactors. Exploring alternative confinement geometries that challenge conventional tokamak constraints, cultivating stable plasma conditions through systematic design space investigation. Engineering the environment where fusion becomes practical.
                 </p>
                 <a href="docs/fusion-energy-research.pdf" class="doc-link">View Details →</a>
+            </div>
+        </section>
+
+        <h3 class="section-heading" id="observations">Observations</h3>
+        <section class="writing">
+            <div class="work-item">
+                <div class="work-label">Essay</div>
+                <h2>The Hollowing</h2>
+                <p>
+                    How modern cultural mechanisms quietly dismantle the social technologies that hold civilizations together. An extended diagnosis spanning manipulative advertising, the loss of the repair conversation, the collapse of approach norms, class insulation, the influencer layer, the hollowing of the marriage vow, and the discourse defenses that prevent any of this from being recognized. The work is to keep the problems describable, so that fixing them remains possible.
+                </p>
+                <a href="observations/the-hollowing.html" class="doc-link">Read →</a>
+            </div>
+
+            <div class="work-item">
+                <div class="work-label">Essay</div>
+                <h2>The Architecture of Home</h2>
+                <p>
+                    The origin, strength, and unraveling of the traditional family structure. An examination of household roles not as a relic of oppression but as a finely tuned solution to the problem of human survival — and an account of how industrialization hollowed the most skilled components of the domestic vocation while leaving its identity weight intact, producing the unresolvable household friction so many couples now live inside without vocabulary for what they are experiencing.
+                </p>
+                <a href="observations/the-architecture-of-home.html" class="doc-link">Read →</a>
+            </div>
+        </section>
+
+        <h3 class="section-heading" id="theoretical-notes">Theoretical Notes</h3>
+        <section class="writing">
+            <div class="work-item">
+                <div class="work-label">Paper</div>
+                <h2>Examining the Foundations of Translational Symmetry via Observable Invariance</h2>
+                <p>
+                    Translational symmetry and the associated conservation of momentum are central assumptions underlying classical and modern physical theories, typically treated as exact despite being inferred from observations on finite, environmentally embedded systems. This paper introduces an unconstrained acceleration-like term into Newtonian dynamics and analyzes the conditions under which standard observables remain invariant. Preserving familiar observables imposes strong structural constraints, suggesting that translational symmetry may be an emergent, scale-dependent property rather than a fundamental one.
+                </p>
+                <a href="docs/translational-symmetry.pdf" class="doc-link">Read PDF →</a>
             </div>
         </section>
 
