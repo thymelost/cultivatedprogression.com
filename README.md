@@ -6,11 +6,12 @@ Portfolio website for Cultivated Progression — a research and development orga
 
 ## Website Structure
 
-- `index.html` — Main landing page (engineering portfolio + links to Observations and Theoretical Notes)
-- `wrangler.jsonc` — Cloudflare Pages / Workers deployment config
-- `docs/` — Project documentation and theoretical papers (PDF format)
-- `observations/` — Long-form essays index page + per-essay HTML pages
-- `theoretical-notes/` — Theoretical notes index page (papers themselves live in `docs/`)
+- `wrangler.jsonc` — Cloudflare Pages / Workers deployment config (serves `public/`)
+- `public/index.html` — Main landing page (engineering portfolio + links to Observations and Theoretical Notes)
+- `public/_headers` — Security response headers (CSP, X-Frame-Options, etc.)
+- `public/docs/` — Project documentation and theoretical papers (PDF format)
+- `public/observations/` — Long-form essays index page + per-essay HTML pages
+- `public/theoretical-notes/` — Theoretical notes index page (papers themselves live in `public/docs/`)
 
 ## Projects
 
