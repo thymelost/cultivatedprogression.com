@@ -6,30 +6,59 @@ Portfolio website for Cultivated Progression — a research and development orga
 
 ## Website Structure
 
-- `index.html` — Main landing page
+- `index.html` — Main landing page (single-page static site)
+- `wrangler.jsonc` — Cloudflare Pages / Workers deployment config
 - `docs/` — Project documentation (PDF format)
-  - `adaptive-learning-platform.pdf`
-  - `mental-performance-training.pdf`
-  - `fusion-energy-research.pdf`
-  - `fiber-processing-overview.pdf`
-  - `android-robotics-overview.pdf`
 
 ## Projects
 
 ### Adaptive Learning / Education
 Mastery-based K-12 education platform targeting the homeschool market. Validates mastery through empirical retention testing at spaced intervals.
+- `docs/adaptive-learning-platform.pdf`
 
 ### Cognitive Optimization
 Neuroscience-based mental performance training system for developing attention control, emotional regulation, and metacognitive awareness.
-
-### Fusion Energy
-Research into novel magnetic confinement topologies for compact, steady-state fusion reactors.
+- `docs/mental-performance-training.pdf`
 
 ### Industrial Automation
 Patent-pending continuous-flow fiber processing system automating flax to linen production.
+- `docs/fiber-processing-overview.pdf`
+- `docs/fiber-processing-detailed.pdf`
 
 ### Robotics
 Maintainable android architecture using layered artificial muscle ensembles, three-tier federated power, and hardware-enforced safety.
+- `docs/android-robotics-overview.pdf`
+- `docs/Android_Robot_Summary.pdf`
+
+### Life Support / Space Systems
+Bioregenerative habitat for a 25-person crew based on controlled rice cultivation, designed for long-duration spaceflight or isolated terrestrial installations.
+- `docs/Bioregenerative_Habitat_Summary.pdf`
+- `docs/Bioregenerative_Habitat_Detailed.pdf`
+
+### Resource Extraction / Space Mining
+Thermal Fractional Ore Processing System (TFOPS) — zero-waste, zero-emission staged thermal separation that captures every mineralogical fraction as a marketable product. Gravity- and atmosphere-agnostic; scales from terrestrial mines to lunar and asteroid processing.
+- `docs/tfops-overview.pdf`
+- `docs/tfops-terrestrial-detailed.pdf`
+- `docs/tfops-space-detailed.pdf`
+
+### Space Mining / Asteroid Systems
+Zero-waste asteroid extraction architecture: dual-pulse plasma laser drill, pneumatic wedge fracture, closed-loop gas recovery. Output feeds directly into TFOPS.
+- `docs/asteroid-mining-overview.pdf`
+- `docs/asteroid-mining-detailed.pdf`
+
+### Space Architecture / Lunar Civilization
+Sub-lunar colony architecture — permanent lunar habitation built around the dual-pulse plasma laser drill. Inter-settlement vacuum maglev network and 1g centripetal sleep facility for skeletal/cardiovascular conditioning.
+- `docs/sub-lunar-colony-overview.pdf`
+- `docs/sub-lunar-colony-detailed.pdf`
+
+### Musical Instrument Design
+Bowed piano — electromechanical keyboard instrument that replaces hammers with reciprocating bow actuators for sustained, expressive tones.
+- `docs/Bowed_Piano_Summary.pdf`
+- `docs/Bowed_Piano_Detailed.pdf`
+
+### Fusion Energy
+Research into novel magnetic confinement topologies for compact, steady-state fusion reactors.
+- `docs/fusion-energy-research.pdf`
 
 ## Deployment
 
