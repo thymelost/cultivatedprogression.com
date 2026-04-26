@@ -6,10 +6,11 @@ Portfolio website for Cultivated Progression — a research and development orga
 
 ## Website Structure
 
-- `index.html` — Main landing page (single-page static site)
+- `index.html` — Main landing page (engineering portfolio + links to Observations and Theoretical Notes)
 - `wrangler.jsonc` — Cloudflare Pages / Workers deployment config
 - `docs/` — Project documentation and theoretical papers (PDF format)
-- `observations/` — Long-form essays rendered as HTML
+- `observations/` — Long-form essays index page + per-essay HTML pages
+- `theoretical-notes/` — Theoretical notes index page (papers themselves live in `docs/`)
 
 ## Projects
 
@@ -63,23 +64,16 @@ Research into novel magnetic confinement topologies for compact, steady-state fu
 
 ## Observations
 
-Long-form essays on cultural and social patterns, rendered as HTML.
+Long-form essays on cultural and social patterns, rendered as HTML. Index page at `observations/index.html`.
 
-### The Hollowing
-How modern cultural mechanisms quietly dismantle the social technologies that hold civilizations together.
-- `observations/the-hollowing.html`
-
-### The Architecture of Home
-The origin, strength, and unraveling of the traditional family structure.
-- `observations/the-architecture-of-home.html`
+- The Hollowing — `observations/the-hollowing.html`
+- The Architecture of Home — `observations/the-architecture-of-home.html`
 
 ## Theoretical Notes
 
-Speculative theoretical papers from first principles, distributed as PDFs.
+Speculative theoretical papers from first principles, distributed as PDFs. Index page at `theoretical-notes/index.html`.
 
-### Examining the Foundations of Translational Symmetry via Observable Invariance
-Diagnostic analysis of translational symmetry as a possibly emergent, scale-dependent property rather than a fundamental one.
-- `docs/translational-symmetry.pdf`
+- Examining the Foundations of Translational Symmetry via Observable Invariance — `docs/translational-symmetry.pdf`
 
 ## Deployment
 

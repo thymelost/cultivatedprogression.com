@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Observations — Cultivated Progression</title>
+    <meta name="description" content="Long-form essays on cultural and social patterns — observation as method, diagnosis without prescription.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #151515;
+            --text-primary: #e8e8e8;
+            --text-secondary: #999;
+            --accent: #d4af37;
+            --accent-dim: #8b7728;
+            --border: #2a2a2a;
+        }
+
+        body {
+            font-family: 'Newsreader', Georgia, serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 20% 30%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 70%, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
+            animation: drift 30s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(5%, -5%) rotate(2deg); }
+            66% { transform: translate(-5%, 5%) rotate(-2deg); }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            padding: 3rem 0 2rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+            text-decoration: none;
+        }
+
+        .back-link {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover { color: var(--accent); }
+
+        .hero {
+            padding: 2rem 0 5rem;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .lede {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 42rem;
+            line-height: 1.7;
+        }
+
+        .listing {
+            border-top: 1px solid var(--border);
+            margin-bottom: 6rem;
+        }
+
+        .item {
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .item:hover {
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.02), transparent);
+        }
+
+        .item-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-dim);
+            margin-bottom: 1rem;
+        }
+
+        .item h2 {
+            font-size: 1.75rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .item p {
+            color: var(--text-secondary);
+            max-width: 38rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .read-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--accent-dim);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .read-link:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1.5rem; }
+            h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/" class="logo">CULTIVATED PROGRESSION</a>
+            <a href="/" class="back-link">← Home</a>
+        </header>
+
+        <section class="hero">
+            <h1>Observations</h1>
+            <p class="lede">
+                Long-form essays on cultural and social patterns. Observation as method — diagnosis without prescription, in the recognition that naming what is happening is a separate operation from fixing it, and that a culture without accurate diagnostic vocabulary loses the option of repair regardless of circumstances.
+            </p>
+        </section>
+
+        <section class="listing">
+            <div class="item">
+                <div class="item-label">Essay</div>
+                <h2>The Hollowing</h2>
+                <p>
+                    How modern cultural mechanisms quietly dismantle the social technologies that hold civilizations together. An extended diagnosis spanning manipulative advertising, the loss of the repair conversation, the collapse of approach norms, class insulation, the influencer layer, the hollowing of the marriage vow, and the discourse defenses that prevent any of this from being recognized. The work is to keep the problems describable, so that fixing them remains possible.
+                </p>
+                <a href="the-hollowing.html" class="read-link">Read →</a>
+            </div>
+
+            <div class="item">
+                <div class="item-label">Essay</div>
+                <h2>The Architecture of Home</h2>
+                <p>
+                    The origin, strength, and unraveling of the traditional family structure. An examination of household roles not as a relic of oppression but as a finely tuned solution to the problem of human survival — and an account of how industrialization hollowed the most skilled components of the domestic vocation while leaving its identity weight intact, producing the unresolvable household friction so many couples now live inside without vocabulary for what they are experiencing.
+                </p>
+                <a href="the-architecture-of-home.html" class="read-link">Read →</a>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2026 Cultivated Progression. Las Vegas, NV.
+        </footer>
+    </div>
+</body>
+</html>
