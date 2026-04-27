@@ -22,3 +22,6 @@ Thumbs.db
 !.dev.vars.example
 .env*
 !.env.example
+
+# Local rollback snapshot of the previous site (history is in prior commits)
+public-old/

@@ -1,213 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Architecture of Home — Cultivated Progression</title>
-    <meta name="description" content="An examination of the traditional family structure as a finely tuned solution to the problem of human survival, and the forces that undermined it.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-    --bg-primary: #0a0a0a;
-    --bg-secondary: #151515;
-    --text-primary: #e8e8e8;
-    --text-secondary: #999;
-    --accent: #d4af37;
-    --accent-dim: #8b7728;
-    --border: #2a2a2a;
-}
-
-body {
-    font-family: 'Newsreader', Georgia, serif;
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    line-height: 1.75;
-    overflow-x: hidden;
-}
-
-body::before {
-    content: '';
-    position: fixed;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(ellipse at 20% 30%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 70%, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
-    animation: drift 30s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 0;
-}
-
-@keyframes drift {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    33% { transform: translate(5%, -5%) rotate(2deg); }
-    66% { transform: translate(-5%, 5%) rotate(-2deg); }
-}
-
-.page-header {
-    border-bottom: 1px solid var(--border);
-    position: relative;
-    z-index: 1;
-}
-
-.page-header-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-.logo {
-    font-size: 1.05rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    color: var(--accent);
-    font-family: 'JetBrains Mono', monospace;
-    text-decoration: none;
-}
-
-.back-link {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    transition: color 0.3s ease;
-}
-
-.back-link:hover { color: var(--accent); }
-
-main {
-    max-width: 44rem;
-    margin: 0 auto;
-    padding: 5rem 2rem 4rem;
-    position: relative;
-    z-index: 1;
-}
-
-.essay-meta {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--accent-dim);
-    margin-bottom: 1.75rem;
-}
-
-h1 {
-    font-size: clamp(2rem, 5vw, 3.25rem);
-    font-weight: 400;
-    line-height: 1.15;
-    margin-bottom: 1.5rem;
-    font-style: italic;
-    color: var(--text-primary);
-}
-
-.subtitle {
-    font-size: 1.15rem;
-    color: var(--text-secondary);
-    line-height: 1.55;
-    font-style: italic;
-    margin-bottom: 4rem;
-    padding-bottom: 3rem;
-    border-bottom: 1px solid var(--border);
-}
-
-article {
-    font-size: 1.175rem;
-}
-
-article p {
-    margin-bottom: 1.5rem;
-    color: var(--text-primary);
-}
-
-article h2 {
-    font-size: clamp(1.5rem, 3vw, 1.85rem);
-    font-weight: 500;
-    line-height: 1.25;
-    margin: 5rem 0 0.5rem;
-    color: var(--text-primary);
-    font-style: italic;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border);
-}
-
-article h2 + p,
-article h3 + p {
-    margin-top: 0;
-}
-
-article h3 {
-    font-size: 0.78rem;
-    font-weight: 500;
-    margin: 2.75rem 0 1rem;
-    color: var(--accent);
-    font-family: 'JetBrains Mono', monospace;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-}
-
-article hr {
-    border: none;
-    margin: 3.5rem auto;
-    text-align: center;
-    height: auto;
-}
-
-article hr::before {
-    content: '* * *';
-    color: var(--accent-dim);
-    letter-spacing: 0.5em;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.85rem;
-}
-
-footer {
-    border-top: 1px solid var(--border);
-    margin-top: 6rem;
-    padding: 3rem 2rem;
-    text-align: center;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    font-family: 'JetBrains Mono', monospace;
-    position: relative;
-    z-index: 1;
-}
-
-@media (max-width: 768px) {
-    .page-header-inner { padding: 1.5rem; }
-    main { padding: 3rem 1.5rem 2rem; }
-    article { font-size: 1.1rem; }
-}
-
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Architecture of Home — Cultivated Progression</title>
+<meta name="description" content="The origin, strength, and unraveling of the traditional family structure." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../site.css" />
 </head>
 <body>
-    <div class="page-header">
-        <div class="page-header-inner">
-            <a href="/" class="logo">CULTIVATED PROGRESSION</a>
-            <a href="/observations/" class="back-link">← Observations</a>
-        </div>
+
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="../index.html">Cultivated Progression</a>
+      <nav>
+        <a href="../index.html">Projects</a>
+        <a href="../observations/" class="is-current">Observations</a>
+        <a href="../theoretical-notes/">Theoretical Notes</a>
+        <a href="../about.html">About</a>
+      </nav>
+      <span class="stamp">Las Vegas · 2026</span>
     </div>
+  </div>
 
-    <main>
-        <div class="essay-meta">Essay · Observation</div>
-        <h1>The Architecture of Home</h1>
-        <p class="subtitle">The Origin, Strength, and Unraveling of the Traditional Family Structure</p>
+  <section class="wrap essay-hero">
+    <div class="kicker"><a href="../observations/" style="color:inherit;">← Observations</a></div>
+    <h1>The Architecture of <em>Home</em></h1>
+    <p class="deck">The origin, strength, and unraveling of the traditional family structure.</p>
+    <div class="meta">
+      <span>2026</span>
+      <span>Essay · Long-form</span>
+      <span>Architecture · Economics</span>
+    </div>
+  </section>
 
-        <article>
-            <p>The traditional family structure is one of the longest-running experiments in human social organization. It endured, in recognizable form, across thousands of years and dozens of cultures on every inhabited continent. That kind of persistence is not accidental. Systems that do not work do not last. What we are looking at when we examine the traditional division of household roles is not a relic of oppression but a finely tuned solution to the fundamental problem of human survival — one that was far more sophisticated, and far more equitable in its internal logic, than its modern critics tend to acknowledge.</p>
+  <section class="wrap essay">
+<p>The traditional family structure is one of the longest-running experiments in human social organization. It endured, in recognizable form, across thousands of years and dozens of cultures on every inhabited continent. That kind of persistence is not accidental. Systems that do not work do not last. What we are looking at when we examine the traditional division of household roles is not a relic of oppression but a finely tuned solution to the fundamental problem of human survival — one that was far more sophisticated, and far more equitable in its internal logic, than its modern critics tend to acknowledge.</p>
             <p>This essay traces that structure from its origin in practical necessity, through the apprenticeship traditions that made it function, to the forces that undermined it — and argues that what we lost in the transition was far greater than most of us have been taught to recognize.</p>
             <h2>Part One: The Origin</h2>
             <h3>A Single Practical Necessity</h3>
@@ -279,11 +109,11 @@ footer {
             <p>The traditional family structure was not perfect. It accumulated real injustices over time, particularly as the social fiction of male authority hardened into legal and institutional constraint, and as the knowledge boundary between roles produced condescension where mutual respect should have been. Those injustices deserved to be addressed. But the basic structure — two people with complementary, equally demanding, equally skilled domains, each running half of a survival enterprise, raising children within a multigenerational transmission of accumulated practical wisdom — was not itself the injustice. It was, for most of human history, simply what allowed human beings to survive and flourish.</p>
             <p>The current household friction that so many couples experience is not a moral failure. It is not evidence that one partner is lazy or the other is controlling. It is the entirely predictable consequence of dismantling a system without replacing it, of emptying a role of its meaning without offering anything coherent in its place, and of entering into the most demanding partnership in human life without the preparation that every previous generation understood was essential.</p>
             <p>Understanding that clearly is not nostalgia. It is not a political position. It is not an argument that anyone should return to an arrangement they do not choose. It is simply an honest account of what was lost, how it was lost, and why the arguments happening in kitchens and living rooms across the modern world feel so unresolvable — because they are arguments about symptoms, conducted by people who were never shown the underlying structure that, for thousands of years, kept those arguments from needing to happen at all.</p>
-        </article>
-    </main>
+  </section>
 
-    <footer>
-        &copy; 2026 Cultivated Progression. Las Vegas, NV.
-    </footer>
+  <footer class="wrap site-foot">
+    <span>© 2026 Cultivated Progression</span>
+    <span>Las Vegas, NV</span>
+  </footer>
 </body>
 </html>

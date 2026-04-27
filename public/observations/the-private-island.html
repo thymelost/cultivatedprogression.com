@@ -1,206 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Private Island — Cultivated Progression</title>
-    <meta name="description" content="How a century of fiction about hunting humans diagnoses how concentrated power behaves — and how the constitutional vocabulary that once constrained it has been hollowed without being repealed.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-    --bg-primary: #0a0a0a;
-    --bg-secondary: #151515;
-    --text-primary: #e8e8e8;
-    --text-secondary: #999;
-    --accent: #d4af37;
-    --accent-dim: #8b7728;
-    --border: #2a2a2a;
-}
-
-body {
-    font-family: 'Newsreader', Georgia, serif;
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    line-height: 1.75;
-    overflow-x: hidden;
-}
-
-body::before {
-    content: '';
-    position: fixed;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(ellipse at 20% 30%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 70%, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
-    animation: drift 30s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 0;
-}
-
-@keyframes drift {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    33% { transform: translate(5%, -5%) rotate(2deg); }
-    66% { transform: translate(-5%, 5%) rotate(-2deg); }
-}
-
-.page-header {
-    border-bottom: 1px solid var(--border);
-    position: relative;
-    z-index: 1;
-}
-
-.page-header-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-.logo {
-    font-size: 1.05rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    color: var(--accent);
-    font-family: 'JetBrains Mono', monospace;
-    text-decoration: none;
-}
-
-.back-link {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    transition: color 0.3s ease;
-}
-
-.back-link:hover { color: var(--accent); }
-
-main {
-    max-width: 44rem;
-    margin: 0 auto;
-    padding: 5rem 2rem 4rem;
-    position: relative;
-    z-index: 1;
-}
-
-.essay-meta {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--accent-dim);
-    margin-bottom: 1.75rem;
-}
-
-h1 {
-    font-size: clamp(2rem, 5vw, 3.25rem);
-    font-weight: 400;
-    line-height: 1.15;
-    margin-bottom: 1.5rem;
-    font-style: italic;
-    color: var(--text-primary);
-}
-
-.subtitle {
-    font-size: 1.15rem;
-    color: var(--text-secondary);
-    line-height: 1.55;
-    font-style: italic;
-    margin-bottom: 4rem;
-    padding-bottom: 3rem;
-    border-bottom: 1px solid var(--border);
-}
-
-article {
-    font-size: 1.175rem;
-}
-
-article p {
-    margin-bottom: 1.5rem;
-    color: var(--text-primary);
-}
-
-article h2 {
-    font-size: clamp(1.5rem, 3vw, 1.85rem);
-    font-weight: 500;
-    line-height: 1.25;
-    margin: 5rem 0 1.5rem;
-    color: var(--text-primary);
-    font-style: italic;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border);
-}
-
-article h2:first-child {
-    margin-top: 0;
-    padding-top: 0;
-    border-top: none;
-}
-
-article h2 + p {
-    margin-top: 0;
-}
-
-article blockquote {
-    margin: 2rem 0;
-    padding: 0.5rem 1.5rem;
-    border-left: 2px solid var(--accent-dim);
-    color: var(--text-secondary);
-    font-style: italic;
-}
-
-article blockquote p {
-    margin-bottom: 0;
-    color: var(--text-secondary);
-}
-
-footer {
-    border-top: 1px solid var(--border);
-    margin-top: 6rem;
-    padding: 3rem 2rem;
-    text-align: center;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    font-family: 'JetBrains Mono', monospace;
-    position: relative;
-    z-index: 1;
-}
-
-@media (max-width: 768px) {
-    .page-header-inner { padding: 1.5rem; }
-    main { padding: 3rem 1.5rem 2rem; }
-    article { font-size: 1.1rem; }
-}
-
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Private Island — Cultivated Progression</title>
+<meta name="description" content="How a century of fiction about hunting humans diagnoses how concentrated power behaves — and how the constitutional vocabulary that once constrained it has been hollowed without being repealed." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../site.css" />
 </head>
 <body>
-    <div class="page-header">
-        <div class="page-header-inner">
-            <a href="/" class="logo">CULTIVATED PROGRESSION</a>
-            <a href="/observations/" class="back-link">← Observations</a>
-        </div>
+
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="../index.html">Cultivated Progression</a>
+      <nav>
+        <a href="../index.html">Projects</a>
+        <a href="../observations/" class="is-current">Observations</a>
+        <a href="../theoretical-notes/">Theoretical Notes</a>
+        <a href="../about.html">About</a>
+      </nav>
+      <span class="stamp">Las Vegas · 2026</span>
     </div>
+  </div>
 
-    <main>
-        <div class="essay-meta">Essay · Observation</div>
-        <h1>The Private Island</h1>
-        <p class="subtitle">How a hundred years of stories about hunting humans tell us something true about how power actually works — and how the language we use to talk about it has been quietly hollowed out</p>
+  <section class="wrap essay-hero">
+    <div class="kicker"><a href="../observations/" style="color:inherit;">← Observations</a></div>
+    <h1>The Private <em>Island</em></h1>
+    <p class="deck">How a hundred years of stories about hunting humans tell us something true about how power actually works — and how the language we use to talk about it has been quietly hollowed out.</p>
+    <div class="meta">
+      <span>2026</span>
+      <span>Essay · Long-form</span>
+      <span>Power · Constitution</span>
+    </div>
+  </section>
 
-        <article>
-            <h2>I. The Story That Wouldn't Stop Being Told</h2>
+  <section class="wrap essay">
+<h2>I. The Story That Wouldn't Stop Being Told</h2>
             <p>In 1924, Richard Connell published a short story called <em>The Most Dangerous Game</em>. The premise was simple. A bored aristocrat named Zaroff, having grown tired of conventional hunting, has retreated to a private island where he hunts shipwrecked sailors for sport. The story is eight thousand words long. It ends with the protagonist, Rainsford, having been hunted across the island, hidden in Zaroff's bedroom and waiting. The last line is one of the great quiet endings in American short fiction: <em>He had never slept in a better bed, Rainsford decided.</em></p>
             <p>The story has been adapted into film roughly twenty times. It has been the explicit basis for fifty to a hundred movies and several hundred television episodes. Its DNA runs through <em>The Hunger Games</em>, <em>Battle Royale</em>, <em>The Running Man</em>, <em>Squid Game</em>, <em>The Purge</em>, <em>Hostel</em>, <em>Ready or Not</em>, <em>The Belko Experiment</em>, and an entire cinematic genre of professional assassins hunting and being hunted in turn — the <em>John Wick</em> films, the <em>Bourne</em> films, <em>Kill Bill</em>, <em>Collateral</em>, <em>No Country for Old Men</em>, the entire literary tradition of Forsyth, Block, Eisler, Greaney, Silva. Take the broad theme — <em>one human being hunts another as the central engine of the story, with skill and rules and stakes that elevate it past simple murder</em> — and you are looking at a non-trivial fraction of all action and thriller media produced since 1924.</p>
             <p>The story keeps being told because it identifies something true. The question is: what?</p>
@@ -314,11 +151,11 @@ footer {
             <p>The structure, seen whole, is this: power that has to hide what it is doing is power that has already convicted itself, and the rest of us are deciding whether to ratify the verdict or not.</p>
             <p>The Constitution provided the framework for refusing the verdict. The framework has been hollowed but not destroyed. The plural pronouns are still there. The oath still says what it says. The right of resistance is still implied by the Declaration's premise of consent. The military is still constrained by design. The Tenth Amendment still reserves what was not delegated. <em>These United States</em> remains a grammatically valid phrase in current English. The framework can be exercised, by anyone who chooses to exercise it, in any moment when its exercise would matter.</p>
             <p>That is small. It is not nothing.</p>
-        </article>
-    </main>
+  </section>
 
-    <footer>
-        &copy; 2026 Cultivated Progression. Las Vegas, NV.
-    </footer>
+  <footer class="wrap site-foot">
+    <span>© 2026 Cultivated Progression</span>
+    <span>Las Vegas, NV</span>
+  </footer>
 </body>
 </html>

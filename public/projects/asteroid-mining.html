@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Asteroid Mining System — Cultivated Progression</title>
+<meta name="description" content="Dual-pulse plasma laser drill, pneumatic wedge fracture, closed-loop gas recovery. Output feeds TFOPS with no intermediate crushing." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../site.css" />
+</head>
+<body>
+
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="../index.html">Cultivated Progression</a>
+      <nav>
+        <a href="../index.html" class="is-current">Projects</a>
+        <a href="../observations/">Observations</a>
+        <a href="../theoretical-notes/">Theoretical Notes</a>
+        <a href="../about.html">About</a>
+      </nav>
+      <span class="stamp">Las Vegas · 2026</span>
+    </div>
+  </div>
+
+  <section class="wrap proj-hero">
+    <div class="crumbs"><a href="../index.html">Projects</a><span class="sep">/</span>Space Mining</div>
+    <h1>Asteroid <em>Mining</em> System.</h1>
+    <p class="one-liner">Dual-pulse plasma laser drill, pneumatic wedge fracture, closed-loop gas recovery. Output feeds TFOPS with no intermediate crushing.</p>
+  </section>
+
+  <section class="wrap">
+    <div class="proj-meta">
+      <div><span class="k">Status</span><span class="v">Designing</span></div>
+      <div><span class="k">Domain</span><span class="v">Space Mining</span></div>
+      <div><span class="k">Stage</span><span class="v">Architecture v1</span></div>
+      <div><span class="k">Documentation</span><span class="v">2 documents</span></div>
+    </div>
+  </section>
+
+  <section class="wrap proj-grid">
+    <aside class="toc">
+      <div class="ttl">On this page</div>
+      <a href="#problem">Problem</a>
+      <a href="#approach">Approach</a>
+      <a href="#drill">Dual-pulse plasma laser drill.</a>
+      <a href="#fracture">Pneumatic wedge fracture.</a>
+      <a href="#capture">Capture & assay.</a>
+      <a href="#status">Status</a>
+      <a href="#downloads">Downloads</a>
+    </aside>
+
+    <div class="proj-body">
+      <section id="problem">
+        <h2>Problem.</h2>
+        <p>Conventional laser rock drilling tries to vaporize the rock directly. This is energetically expensive and produces molten slag that re-solidifies in the hole, blocking further progress. Mechanical drilling tools wear out — fast, in microgravity, with no on-site resupply. Bulk extraction by impact or explosive produces unsorted rubble that must then be expensively crushed and sorted by an entirely separate process. None of these methods scale to a sustained, autonomous, microgravity operation.</p>
+      </section>
+
+      <section id="approach">
+        <h2>Approach.</h2>
+        <p>The system is built around three integrated innovations: a dual-pulse plasma laser drill for zero-wear excavation, a pneumatic wedge fracture system for controlled bulk extraction, and a closed-loop gas recovery system that reuses working gas across cycles.</p>
+        <p class="pull">"Plasma is the cutting tool, not the byproduct. The IR energy that conventional designs try to suppress becomes the load-bearing mechanism."</p>
+      </section>
+
+      
+      <section id="drill">
+        <h2>Dual-pulse plasma laser drill.</h2>
+        
+<p>A single Q-switched Nd:YAG laser is split by a dichroic beamsplitter into synchronized UV (355 nm) and IR (1064 nm) pulses. The UV generates a dense surface plasma; the IR reheats it via inverse Bremsstrahlung absorption. Path-length matching provides <b>sub-nanosecond synchronization passively</b> — no electronics required.</p>
+<p>Confined plasma against rock in vacuum reaches <b>100–300 GPa</b> against rock with <b>5–25 MPa tensile strength</b> — three to four orders of magnitude above failure. Material removal shifts from thermal vaporization to <b>shockwave spallation</b>, reducing energy per unit volume by roughly <b>100×</b>.</p>
+      </section>
+
+      <section id="fracture">
+        <h2>Pneumatic wedge fracture.</h2>
+        
+<p>From a single entry face, the laser bores a 6×6 grid of shafts. Pre-positioned gas-pressurized bladders expand within the grid, fracturing the working area into <b>25 characterized 8-tonne chunks</b> along predictable stress lines.</p>
+<p>Gas compressibility itself acts as a two-phase regulator: high pressure for fracture initiation, then naturally declining pressure for gentle slab lift. A two-tank architecture and toothpaste-roller recovery returns gas to working pressure every cycle. Working gas is reused.</p>
+      </section>
+
+      <section id="capture">
+        <h2>Capture & assay.</h2>
+        
+<p>A pre-anchored Dyneema net constrains material from the moment of fracture and serves five sequential functions: drilling marker, fracture cover, lift support, closure bag, transport bag.</p>
+<p><b>Real-time spectroscopic assay during drilling</b> enables selective processing — high-value chunks prioritized for immediate TFOPS feed, low-value stored in net bags as buffer inventory. This produces a <b>5.2× revenue-rate improvement</b> over undifferentiated bulk extraction.</p>
+      </section>
+
+      
+
+      
+      <section id="specs">
+        <h2>Specifications.</h2>
+        <table class="specs-table">
+          <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
+          <tbody>
+          <tr><td>Plasma pressure (vs rock)</td><td>100–300 GPa vs 5–25 MPa</td></tr>
+          <tr><td>Energy reduction vs vaporization</td><td>~100×</td></tr>
+          <tr><td>Synchronization</td><td>Sub-ns, passive (path-length)</td></tr>
+          <tr><td>Chunks per cycle</td><td>25 × ~8 t</td></tr>
+          <tr><td>Working gas</td><td>Closed-loop recovery</td></tr>
+          <tr><td>Selective revenue improvement</td><td>5.2× vs bulk</td></tr>
+          <tr><td>Output sized for</td><td>Direct TFOPS feed</td></tr>
+          <tr><td>Mechanical wear</td><td>Zero (drill); minor (rollers)</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="status">
+        <h2>Status.</h2>
+        <p>Architecture v1 complete with full integration analysis. Drill physics is well-modeled and the wavelengths/energies are off-the-shelf. Next step: terrestrial vacuum-chamber demonstration of the dual-pulse drill on representative rock samples.</p>
+      </section>
+
+      <section id="downloads">
+        <h2>Documentation.</h2>
+        <div class="downloads">
+          <a href="../docs/asteroid-mining-overview.pdf">Overview ↓</a>
+          <a href="../docs/asteroid-mining-detailed.pdf">Detailed Paper ↓</a>
+        </div>
+      </section>
+
+      <div class="related">
+        <h4>Related</h4>
+        <div class="related-grid">
+          <a href="tfops.html"><span class="l">Processing</span><span class="t">Thermal Fractional Ore Processing</span></a>
+          <a href="sub-lunar-colony.html"><span class="l">Lunar</span><span class="t">Sub-Lunar Colony Architecture</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="wrap site-foot">
+    <span>© 2026 Cultivated Progression</span>
+    <span>Las Vegas, NV</span>
+  </footer>
+</body>
+</html>

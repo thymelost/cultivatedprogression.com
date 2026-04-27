@@ -1,580 +1,377 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cultivated Progression — Systems That Enable Mastery</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #151515;
-            --text-primary: #e8e8e8;
-            --text-secondary: #999;
-            --accent: #d4af37;
-            --accent-dim: #8b7728;
-            --border: #2a2a2a;
-        }
-
-        body {
-            font-family: 'Newsreader', Georgia, serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        /* Animated gradient background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(
-                ellipse at 20% 30%, 
-                rgba(212, 175, 55, 0.03) 0%, 
-                transparent 50%
-            ),
-            radial-gradient(
-                ellipse at 80% 70%, 
-                rgba(212, 175, 55, 0.02) 0%, 
-                transparent 50%
-            );
-            animation: drift 30s ease-in-out infinite;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        @keyframes drift {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(5%, -5%) rotate(2deg); }
-            66% { transform: translate(-5%, 5%) rotate(-2deg); }
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Header */
-        header {
-            padding: 3rem 0 2rem;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 0;
-            animation: fadeInDown 0.8s ease-out;
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .logo {
-            font-size: 1.1rem;
-            font-weight: 500;
-            letter-spacing: 0.02em;
-            color: var(--accent);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        /* Hero */
-        .hero {
-            padding: 2rem 0;
-            animation: fadeIn 1s ease-out 0.2s both;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 400;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            font-style: italic;
-        }
-
-        .highlight {
-            color: var(--accent);
-            font-style: normal;
-        }
-
-        .subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 42rem;
-            margin-bottom: 3rem;
-            line-height: 1.8;
-        }
-
-        /* Primary nav */
-        .primary-nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2.5rem;
-            margin: 0 0 3rem;
-            padding: 1rem 0;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .primary-nav + .work {
-            margin-top: 0;
-        }
-
-        .nav-link {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-            color: var(--text-secondary);
-            text-decoration: none;
-            padding: 0.25rem 0;
-            transition: color 0.3s ease;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: -0.25rem;
-            height: 1px;
-            background: var(--accent);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .nav-link:hover { color: var(--accent); }
-        .nav-link:hover::after { transform: scaleX(1); }
-        .nav-link.is-current { color: var(--accent); }
-        .nav-link.is-current::after { transform: scaleX(1); }
-
-        .nav-tooltip {
-            position: absolute;
-            top: calc(100% + 0.75rem);
-            left: 0;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 2px;
-            padding: 0.85rem 1.1rem;
-            font-family: 'Newsreader', Georgia, serif;
-            font-size: 0.95rem;
-            text-transform: none;
-            letter-spacing: normal;
-            color: var(--text-secondary);
-            line-height: 1.5;
-            max-width: 22rem;
-            min-width: 16rem;
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(-4px);
-            transition: opacity 0.2s ease, transform 0.2s ease;
-            z-index: 10;
-        }
-
-        .nav-tooltip::before {
-            content: '';
-            position: absolute;
-            top: -1px;
-            left: 1.25rem;
-            width: 8px;
-            height: 8px;
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-            border-left: 1px solid var(--border);
-            transform: translateY(-50%) rotate(45deg);
-        }
-
-        .nav-link:hover .nav-tooltip,
-        .nav-link:focus .nav-tooltip {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @media (max-width: 600px) {
-            .primary-nav { gap: 1.5rem; }
-            .nav-tooltip { display: none; }
-        }
-
-        /* Work sections */
-        .work {
-            display: grid;
-            gap: 0;
-            margin: 6rem 0;
-            border-top: 1px solid var(--border);
-        }
-
-        .work-item {
-            padding: 3rem 0;
-            border-bottom: 1px solid var(--border);
-            opacity: 0;
-            animation: slideUp 0.6s ease-out forwards;
-        }
-
-        .work-item:nth-child(1) { animation-delay: 0.4s; }
-        .work-item:nth-child(2) { animation-delay: 0.6s; }
-        .work-item:nth-child(3) { animation-delay: 0.8s; }
-        .work-item:nth-child(4) { animation-delay: 1.0s; }
-        .work-item:nth-child(5) { animation-delay: 1.2s; }
-        .work-item:nth-child(6) { animation-delay: 1.4s; }
-        .work-item:nth-child(7) { animation-delay: 1.6s; }
-        .work-item:nth-child(8) { animation-delay: 1.8s; }
-        .work-item:nth-child(9) { animation-delay: 2.0s; }
-        .work-item:nth-child(10) { animation-delay: 2.2s; }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .work-item:hover {
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.02), transparent);
-        }
-
-        .work-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--accent-dim);
-            margin-bottom: 1rem;
-        }
-
-        .work-item h2 {
-            font-size: 1.75rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .work-item p {
-            color: var(--text-secondary);
-            max-width: 38rem;
-            line-height: 1.8;
-        }
-
-        /* Approach section */
-        .approach {
-            margin: 8rem 0;
-            padding: 4rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 2px;
-            position: relative;
-            overflow: hidden;
-            animation: fadeIn 0.8s ease-out 1s both;
-        }
-
-        .approach::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            opacity: 0.3;
-        }
-
-        .approach h3 {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--accent);
-            margin-bottom: 2rem;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .approach-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-        }
-
-        .principle {
-            opacity: 0;
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-
-        .principle:nth-child(1) { animation-delay: 1.2s; }
-        .principle:nth-child(2) { animation-delay: 1.4s; }
-        .principle:nth-child(3) { animation-delay: 1.6s; }
-
-        .principle h4 {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 0.75rem;
-            color: var(--text-primary);
-        }
-
-        .principle p {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        /* Contact */
-        .contact {
-            padding: 6rem 0 4rem;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            animation: fadeIn 0.8s ease-out 1.8s both;
-        }
-
-        .contact h3 {
-            font-size: 1.75rem;
-            font-weight: 400;
-            margin-bottom: 1.5rem;
-            font-style: italic;
-        }
-
-        .email {
-            display: inline-block;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1rem;
-            color: var(--accent);
-            text-decoration: none;
-            padding: 0.75rem 1.5rem;
-            border: 1px solid var(--accent-dim);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .email:hover {
-            background: rgba(212, 175, 55, 0.1);
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        /* Footer */
-        footer {
-            padding: 3rem 0;
-            border-top: 1px solid var(--border);
-            margin-top: 4rem;
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 1.5rem;
-            }
-
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            .subtitle {
-                font-size: 1.1rem;
-            }
-
-            .approach {
-                padding: 2rem 1.5rem;
-            }
-
-            .approach-grid {
-                gap: 2rem;
-            }
-        }
-
-        /* Document links */
-        .doc-link {
-            display: inline-block;
-            margin-top: 1rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--accent);
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--accent-dim);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .doc-link:hover {
-            background: rgba(212, 175, 55, 0.1);
-            border-color: var(--accent);
-            transform: translateX(4px);
-        }
-
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cultivated Progression — Systems That Enable Mastery</title>
+<meta name="description" content="Engineering, observation, and first-principles inquiry. Systems that create the conditions for mastery to emerge." />
+<meta property="og:title" content="Cultivated Progression" />
+<meta property="og:description" content="Systems that create the conditions for mastery to emerge." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="site.css" />
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">CULTIVATED PROGRESSION</div>
-        </header>
 
-        <section class="hero">
-            <h1>Systems that create the <span class="highlight">conditions</span> for mastery to emerge.</h1>
-            <p class="subtitle">
-                Engineering, observation, and first-principles inquiry. Removing artificial constraints, naming the patterns that produced them, and examining the foundations that are usually taken for granted.
-            </p>
-        </section>
-
-        <nav class="primary-nav" aria-label="Primary">
-            <a href="/" class="nav-link is-current" aria-current="page">
-                Projects
-                <span class="nav-tooltip">Engineering systems and applied research — adaptive learning, robotics, ore processing, fusion, lunar habitation, and more.</span>
-            </a>
-            <a href="/observations/" class="nav-link">
-                Observations
-                <span class="nav-tooltip">Long-form essays on cultural and social patterns. Observation as method, diagnosis without prescription.</span>
-            </a>
-            <a href="/theoretical-notes/" class="nav-link">
-                Theoretical Notes
-                <span class="nav-tooltip">Speculative first-principles papers on foundational physics. Diagnostic rather than prescriptive.</span>
-            </a>
-        </nav>
-
-        <section class="work">
-            <div class="work-item">
-                <div class="work-label">Adaptive Learning / Education</div>
-                <h2>Mastery-Based Education Platform</h2>
-                <p>
-                    An adaptive learning system targeting the K-12 homeschool market, secondary education, and adult learning that validates mastery through empirical retention testing at spaced intervals. The system automatically adjusts to the learning style best suited to the student. Students progress only when they demonstrate true understanding, with multiple pedagogical pathways and content sourced from proven curricula. The platform doesn't teach—it cultivates the conditions where learning compounds naturally.
-                </p>
-                <a href="docs/adaptive-learning-platform.pdf" class="doc-link">View Details →</a>
-            </div>
-
-            <div class="work-item">
-                <div class="work-label">Cognitive Optimization</div>
-                <h2>Mental Performance Training</h2>
-                <p>
-                    A neuroscience-based system for developing cognitive autonomy and sustained focus. Built on structured progression through attention training, emotional regulation, and metacognitive awareness. Rather than imposing focus, it cultivates the capacity for self-directed mental performance through deliberate practice and validation.
-                </p>
-                <a href="docs/mental-performance-training.pdf" class="doc-link">View Details →</a>
-            </div>
-            
-            <div class="work-item">
-                <div class="work-label">Industrial Automation</div>
-                <h2>Continuous-Flow Fiber Processing</h2>
-                <p>
-                    Patent-pending system for automating flax fiber processing from retting through spinning-ready output. Eliminates manual labor bottlenecks through roller cascade breaking, retractable comb handoff mechanisms, and internal press debris displacement. Continuous flow architecture enables 10–50 kg/hour throughput while maintaining fiber quality. Engineering industrial processes that remove the human constraint without compromising the product.
-                </p>
-                <a href="docs/fiber-processing-overview.pdf" class="doc-link">Overview →</a>
-                <a href="docs/fiber-processing-detailed.pdf" class="doc-link">Detailed Documentation →</a>
-            </div>
-
-            <div class="work-item">
-                <div class="work-label">Robotics</div>
-                <h2>Maintainable Android Architecture</h2>
-                <p>
-                    First-principles robotics design using layered artificial muscle ensembles rather than singular actuators. Fiber bundles arranged at varying angles and force ratios enable complex dexterous movement through ensemble coordination, mirroring biological muscle architecture. Three-tier federated power system, hardware-enforced safety interrupts independent of software state, and replaceable component libraries prioritize graceful degradation over autonomy. Engineering for predictable service life and field maintenance rather than self-repair complexity.
-                </p>
-                <a href="docs/android-robotics-overview.pdf" class="doc-link">Overview →</a>
-                <a href="docs/Android_Robot_Summary.pdf" class="doc-link">Summary →</a>
-            </div>
-
-            <div class="work-item">
-                <div class="work-label">Life Support / Space Systems</div>
-                <h2>Bioregenerative Habitat</h2>
-                <p>
-                    A life support system for a 25-person crew based on controlled agriculture, designed for long-duration spaceflight or isolated terrestrial installations. The system prioritizes predictability and redundancy over theoretical efficiency, using rice cultivation as the primary oxygen generation engine and implementing comprehensive materials cycling to minimize resupply requirements. Dual-purpose rice cylinders operated out-of-phase provide steady gas exchange, embodying a "boring = safe" philosophy that favors proven techniques over optimization.
-                </p>
-                <a href="docs/Bioregenerative_Habitat_Summary.pdf" class="doc-link">Summary →</a>
-                <a href="docs/Bioregenerative_Habitat_Detailed.pdf" class="doc-link">Detailed Documentation →</a>
-            </div>
-
-            <div class="work-item">
-                <div class="work-label">Resource Extraction / Space Mining</div>
-                <h2>Thermal Fractional Ore Processing</h2>
-                <p>
-                    A zero-waste, zero-emission ore processing architecture that replaces conventional single-target extraction with staged thermal separation, capturing every mineralogical fraction as a characterized, marketable product. Hydrogen combustion heats all bays — producing only water vapor, zero combustion CO₂, and the purest possible bay atmospheres. At Bay 3, hydrogen serves as both fuel and reductant (FeO + H₂ → Fe + H₂O), eliminating all carbon from iron reduction. EM (Lorentz force) separation replaces centrifuge at Bay 3 (TRL 7–8, no moving parts, gravity-independent). Sub-atmospheric Bay 3 operation makes reducing gas escape physically impossible. CaO flux at Bay 2 structurally eliminates fayalite before iron reduction. All process CO₂ from calcite decomposition is captured in sealed bays and mineralized into CO₂-cured construction products — zero atmospheric release, zero geological storage, zero perpetual monitoring. The convergent-divergent diamond topology feeds 12+ revenue streams at $278/t ore. Glass and stone are zero-cost inventory — byproducts of metal extraction that replace both natural granite on function and laminate on cost. Reconfigurable pin mold casting enables digital manufacturing: upload geometry, pour product, every piece different at commodity cost. Phase 1 (H₂ combustion + purchased H₂) requires ~$1.0B CAPEX — less than half of conventional — and is profitable on metals alone. Optional Phase 2 adds on-site solar and electrolyzer when economics justify it. TFOPS applies to all solid rock mining: 11 of 15 most-mined metals are in silicate host rock, and the lower the grade, the more transformative the economics. The architecture is gravity and atmosphere agnostic, scaling from terrestrial mine sites to lunar and asteroid processing through module substitution, not redesign.
-                </p>
-                <a href="docs/tfops-overview.pdf" class="doc-link">Overview →</a>
-                <a href="docs/tfops-terrestrial-detailed.pdf" class="doc-link">Terrestrial Detailed →</a>
-                <a href="docs/tfops-space-detailed.pdf" class="doc-link">Space Detailed →</a>
-            </div>
-
-            <div class="work-item">
-                <div class="work-label">Space Mining / Asteroid Systems</div>
-                <h2>Asteroid Mining System</h2>
-                <p>
-                    A zero-waste asteroid extraction architecture built around three integrated innovations: a dual-pulse plasma laser drill for zero-wear rock excavation, a pneumatic wedge fracture system for controlled bulk extraction, and a closed-loop gas recovery system that reuses working gas across cycles. A single Q-switched Nd:YAG laser is split by a dichroic beamsplitter into synchronized UV and IR pulses — the UV generates a dense plasma, the IR reheats it via inverse Bremsstrahlung, and path-length matching provides sub-nanosecond synchronization with no electronics. Confined plasma reaches 100–300 GPa against rock with 5–25 MPa tensile strength, shifting removal from thermal vaporization to shockwave spallation and reducing energy per unit volume by roughly 100×. Gas-pressurized bladders bored from a single entry face expand within a 6×6 shaft grid, fracturing the working area into 25 characterized 8-tonne chunks along predictable stress lines. Gas compressibility itself acts as a two-phase regulator — high pressure for fracture initiation, naturally declining pressure for gentle slab lift — with a two-tank architecture and toothpaste-roller recovery returning gas to working pressure every cycle. A pre-anchored Dyneema net constrains material from the moment of fracture and serves five sequential functions: drilling marker, fracture cover, lift support, closure bag, transport bag. Real-time spectroscopic assay during drilling enables selective processing — high-value chunks prioritized, low-value stored in net bags as buffer inventory — for 5.2× revenue-rate improvement over undifferentiated bulk extraction. Output feeds directly into TFOPS with no intermediate crushing.
-                </p>
-                <a href="docs/asteroid-mining-overview.pdf" class="doc-link">Overview →</a>
-                <a href="docs/asteroid-mining-detailed.pdf" class="doc-link">Detailed Documentation →</a>
-            </div>
-
-            <div class="work-item">
-                <div class="work-label">Space Architecture / Lunar Civilization</div>
-                <h2>Sub-Lunar Colony Architecture</h2>
-                <p>
-                    A permanent lunar habitation framework built on a single design philosophy: go deep enough and build well enough that the Moon itself becomes the habitat. The enabling technology is the dual-pulse plasma laser drill from the asteroid mining system, adapted for precision sub-surface excavation with zero mechanical wear, arbitrary cross-section, and real-time geological sensing. At 100 meters depth, lunar rock provides stable temperature, compressive confining stress, no groundwater, no thermal cycling, and no significant seismic activity — pressure containment becomes a sealing problem rather than a structural one. Spaces are cut for human psychology first: vaulted ceilings, wide corridors that feel like streets, niches and alcoves shaped directly into rock. Three independent surface access routes — personnel walking tunnel, vehicle logistics ramp, internal monorail — each incorporate multi-bend blast geometry and emergency refuges at every lock chamber. An inter-settlement vacuum maglev network operates in three speed tiers; the deepest express tunnels follow great-circle routes where the Moon's own radius exceeds the curve radius required for 23,000 km/h comfort. Vanguard cars physically sweep the cross-section ahead of every train, rotating couches allow 2g emergency braking in a reclined rearward-facing position, and a circular 1-kilometer-minimum-radius maglev sleep facility provides 8 hours of 1g centripetal loading nightly at 357 km/h cruise (0.95 RPM, below the 1 RPM comfort threshold for rotating habitats) — with standing weight-bearing pods supplementing for skeletal and cardiovascular conditioning. The same infrastructure that prevents generational physiological divergence from Earth-baseline humanity also serves as emergency response network, g-tolerance training, and community space. Every cubic meter excavated feeds TFOPS; excavation and resource extraction are the same operation. A 500kg laser drill system, landed in a single mission, is the foundation from which everything else follows.
-                </p>
-                <a href="docs/sub-lunar-colony-overview.pdf" class="doc-link">Overview →</a>
-                <a href="docs/sub-lunar-colony-detailed.pdf" class="doc-link">Detailed Documentation →</a>
-            </div>
-
-            <div class="work-item">
-                <div class="work-label">Musical Instrument Design</div>
-                <h2>Bowed Piano</h2>
-                <p>
-                    An electromechanical keyboard instrument that replaces traditional piano hammers with reciprocating bow actuators, enabling sustained, expressive tones previously impossible on keyboard instruments. The design combines the immediacy of keyboard performance with the timbral richness of bowed strings, bridging the gap between piano, violin, and harp families. A spool-fed rosined ribbon system with three independently controllable bow positions per string creates distinct timbral zones analogous to harpist hand positioning.
-                </p>
-                <a href="docs/Bowed_Piano_Summary.pdf" class="doc-link">Summary →</a>
-                <a href="docs/Bowed_Piano_Detailed.pdf" class="doc-link">Detailed Documentation →</a>
-            </div>
-
-            <div class="work-item">
-                <div class="work-label">Fusion Energy</div>
-                <h2>Magnetic Confinement Design</h2>
-                <p>
-                    Research and development of novel magnetic field topologies for compact, steady-state fusion reactors. Exploring alternative confinement geometries that challenge conventional tokamak constraints, cultivating stable plasma conditions through systematic design space investigation. Engineering the environment where fusion becomes practical.
-                </p>
-                <a href="docs/fusion-energy-research.pdf" class="doc-link">View Details →</a>
-            </div>
-        </section>
-
-        <section class="approach">
-            <h3>Core Principles</h3>
-            <div class="approach-grid">
-                <div class="principle">
-                    <h4>Question Inherited Constraints</h4>
-                    <p>Many boundaries are artifacts of historical convenience, not natural limits. We identify and remove artificial constraints that prevent genuine progress.</p>
-                </div>
-                <div class="principle">
-                    <h4>Design Conditions, Not Outcomes</h4>
-                    <p>Mastery, capability, and breakthrough cannot be forced. We engineer the environment and systems where they emerge naturally through proper cultivation.</p>
-                </div>
-                <div class="principle">
-                    <h4>Validate Empirically</h4>
-                    <p>Claims require evidence. Whether in learning retention, cognitive performance, or plasma confinement—progression must be measured and verified, not assumed.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="contact">
-            <h3>Let's build systems that enable real progress.</h3>
-            <a href="/cdn-cgi/l/email-protection#254f5056514c4b65465049514c534451404155574a42574056564c4a4b0b464a48" class="email"><span class="__cf_email__" data-cfemail="89e3fcfafde0e7c9eafce5fde0ffe8fdecedf9fbe6eefbecfafae0e6e7a7eae6e4">[email&#160;protected]</span></a>
-        </section>
-
-        <footer>
-            &copy; 2026 Cultivated Progression. Las Vegas, NV.
-        </footer>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="index.html">Cultivated Progression</a>
+      <nav>
+        <a href="index.html" class="is-current">Projects</a>
+        <a href="observations/">Observations</a>
+        <a href="theoretical-notes/">Theoretical Notes</a>
+        <a href="about.html">About</a>
+      </nav>
+      <span class="stamp">Las Vegas · 2026</span>
     </div>
+  </div>
+
+  <section class="wrap hero">
+    <h1>Systems that create the <em>conditions</em> for mastery to emerge.</h1>
+    <p class="deck">Engineering, observation, and first-principles inquiry. Removing artificial constraints, naming the patterns that produced them, and examining the foundations that are usually taken for granted.</p>
+    <div class="meta">
+      <span>10 Projects · 3 Essays · 1 Note</span>
+      <span class="rule"></span>
+      <span><a href="#system">Start with the system →</a></span>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="sec-head" id="system">
+      <span class="num">01 / Flagship</span>
+      <h2>Three projects, <em>one closed loop</em>.</h2>
+      <p class="lede">A drill that excavates asteroids is the same drill that excavates the Moon. Both feed a processor that runs zero-waste on hydrogen. Excavation and resource extraction become the same operation.</p>
+    </div>
+  </div>
+
+  <section class="wrap system">
+    <div class="legend">
+      <h3>The shared infrastructure</h3>
+      <p>The <span style="color:var(--gold)">dual-pulse plasma laser drill</span> is the load-bearing technology — a single device adapted twice: once for asteroid bulk extraction, once for sub-lunar habitation excavation.</p>
+      <p>Both feed <span style="color:var(--gold)">TFOPS</span> — a thermal-fractional ore processor that captures every mineralogical fraction as a marketable product, gravity- and atmosphere-agnostic.</p>
+      <p>The system is also profitable terrestrially. Lunar economics are an upgrade path, not a prerequisite.</p>
+      <p class="note">Click any node to read the project →</p>
+    </div>
+
+    <div class="map" aria-label="System map: laser drill feeds asteroid mining and sub-lunar colony, both feed TFOPS">
+      <svg viewBox="0 0 800 550" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1d1d1d" stroke-width="1"/>
+          </pattern>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#d4af37"/>
+          </marker>
+        </defs>
+        <rect width="800" height="550" fill="url(#g)"/>
+        <text x="20" y="28" class="lab">FIG · SHARED INFRASTRUCTURE</text>
+        <text x="780" y="28" text-anchor="end" class="lab">REV 04 · 2026</text>
+
+        <a href="projects/asteroid-mining.html#drill">
+          <g transform="translate(400 130)">
+            <rect class="node-rect" x="-110" y="-44" width="220" height="88" fill="#0a0a0a" stroke="#d4af37" stroke-width="1.5"/>
+            <text x="0" y="-14" text-anchor="middle" class="lab lab-gold">CORE TECHNOLOGY</text>
+            <text x="0" y="10" text-anchor="middle" class="nodelabel">Dual-Pulse Plasma</text>
+            <text x="0" y="30" text-anchor="middle" class="nodelabel">Laser Drill</text>
+          </g>
+        </a>
+
+        <a href="projects/asteroid-mining.html">
+          <g transform="translate(180 320)">
+            <rect class="node-rect" x="-110" y="-44" width="220" height="88" fill="#0a0a0a" stroke="#3a3a3a"/>
+            <text x="0" y="-14" text-anchor="middle" class="lab">EXTRACTION · SPACE</text>
+            <text x="0" y="10" text-anchor="middle" class="nodelabel-sm">Asteroid</text>
+            <text x="0" y="30" text-anchor="middle" class="nodelabel-sm">Mining System</text>
+          </g>
+        </a>
+
+        <a href="projects/sub-lunar-colony.html">
+          <g transform="translate(620 320)">
+            <rect class="node-rect" x="-110" y="-44" width="220" height="88" fill="#0a0a0a" stroke="#3a3a3a"/>
+            <text x="0" y="-14" text-anchor="middle" class="lab">EXCAVATION · LUNAR</text>
+            <text x="0" y="10" text-anchor="middle" class="nodelabel-sm">Sub-Lunar Colony</text>
+            <text x="0" y="30" text-anchor="middle" class="nodelabel-sm">Architecture</text>
+          </g>
+        </a>
+
+        <a href="projects/tfops.html">
+          <g transform="translate(400 470)">
+            <rect class="node-rect" x="-130" y="-44" width="260" height="88" fill="#0a0a0a" stroke="#d4af37" stroke-width="1.5"/>
+            <text x="0" y="-14" text-anchor="middle" class="lab lab-gold">PROCESSING · ZERO-WASTE</text>
+            <text x="0" y="10" text-anchor="middle" class="nodelabel">Thermal Fractional</text>
+            <text x="0" y="30" text-anchor="middle" class="nodelabel">Ore Processing</text>
+          </g>
+        </a>
+
+        <path d="M 340 158 Q 240 230 230 276" fill="none" stroke="#d4af37" stroke-width="1.4" marker-end="url(#arrow)"/>
+        <path d="M 460 158 Q 560 230 570 276" fill="none" stroke="#d4af37" stroke-width="1.4" marker-end="url(#arrow)"/>
+        <path d="M 230 364 Q 290 430 340 442" fill="none" stroke="#d4af37" stroke-width="1.4" marker-end="url(#arrow)"/>
+        <path d="M 570 364 Q 510 430 460 442" fill="none" stroke="#d4af37" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+        <text x="280" y="226" class="lab" fill="#888">deploys</text>
+        <text x="498" y="226" class="lab" fill="#888">deploys</text>
+        <text x="232" y="426" class="lab" fill="#888">8t chunks</text>
+        <text x="558" y="426" class="lab" fill="#888">excavated rock</text>
+
+        <g transform="translate(400 530)">
+          <text x="0" y="0" text-anchor="middle" class="lab" fill="#888">→  12+ revenue streams · metals · glass · stone · CO₂-cured construction</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">02 / Projects</span>
+      <h2>The full portfolio.</h2>
+      <p class="lede">Ten projects across engineering, learning, and instrument design. Status badges signal where each one stands today — prototyped, designed, or in research.</p>
+    </div>
+  </div>
+
+  <section class="wrap projects">
+    <div class="grid-cards">
+
+      <article class="card">
+        <div class="row1">
+          <span class="label">Resource Extraction</span>
+          <span class="pill design">Designing</span>
+        </div>
+        <h3>Thermal Fractional Ore Processing</h3>
+        <p class="summary">Zero-waste, zero-emission ore processing. Hydrogen as fuel and reductant. Captures every mineralogical fraction — metals, glass, stone, CO₂-cured construction — as a marketable product.</p>
+        <div class="specs">
+          <span><b>$278/t</b> ore</span>
+          <span><b>~$1.0B</b> Phase 1 CAPEX</span>
+          <span><b>12+</b> revenue streams</span>
+          <span><b>TRL 7–8</b> separation</span>
+        </div>
+        <div class="links"><a href="projects/tfops.html">Brief →</a><a href="docs/tfops-overview.pdf">Specs ↓</a><a href="docs/tfops-terrestrial-detailed.pdf">Paper ↓</a></div>
+      </article>
+
+      <article class="card">
+        <div class="row1">
+          <span class="label">Space Mining</span>
+          <span class="pill design">Designing</span>
+        </div>
+        <h3>Asteroid Mining System</h3>
+        <p class="summary">Dual-pulse plasma laser drill, pneumatic wedge fracture, closed-loop gas recovery. Output feeds TFOPS with no intermediate crushing.</p>
+        <div class="specs">
+          <span><b>100–300 GPa</b> plasma</span>
+          <span><b>~100×</b> energy reduction</span>
+          <span><b>25 × 8t</b> chunks/cycle</span>
+          <span><b>5.2×</b> revenue rate</span>
+        </div>
+        <div class="links"><a href="projects/asteroid-mining.html">Brief →</a><a href="docs/asteroid-mining-overview.pdf">Specs ↓</a><a href="docs/asteroid-mining-detailed.pdf">Paper ↓</a></div>
+      </article>
+
+      <article class="card">
+        <div class="row1">
+          <span class="label">Lunar Civilization</span>
+          <span class="pill design">Designing</span>
+        </div>
+        <h3>Sub-Lunar Colony Architecture</h3>
+        <p class="summary">Permanent lunar habitation 100 m below the surface. Inter-settlement vacuum maglev. 1g centripetal sleep facility prevents generational physiological divergence from Earth-baseline.</p>
+        <div class="specs">
+          <span><b>500 kg</b> drill payload</span>
+          <span><b>23,000 km/h</b> express</span>
+          <span><b>0.95 RPM</b> sleep ring</span>
+          <span><b>3</b> surface routes</span>
+        </div>
+        <div class="links"><a href="projects/sub-lunar-colony.html">Brief →</a><a href="docs/sub-lunar-colony-overview.pdf">Specs ↓</a><a href="docs/sub-lunar-colony-detailed.pdf">Paper ↓</a></div>
+      </article>
+
+      <article class="card">
+        <div class="row1">
+          <span class="label">Industrial Automation</span>
+          <span class="pill research">Research</span>
+        </div>
+        <h3>Continuous-Flow Fiber Processing</h3>
+        <p class="summary">Patent-pending automation of flax fiber from retting to spinning-ready output. Roller cascade breaking, retractable comb handoff, internal press debris displacement.</p>
+        <div class="specs">
+          <span><b>10–50 kg/h</b> throughput</span>
+          <span>Patent pending</span>
+          <span>Continuous flow</span>
+          <span>Fiber length preserved</span>
+        </div>
+        <div class="links"><a href="projects/fiber-processing.html">Brief →</a><a href="docs/fiber-processing-overview.pdf">Specs ↓</a><a href="docs/fiber-processing-detailed.pdf">Paper ↓</a></div>
+      </article>
+
+      <article class="card">
+        <div class="row1">
+          <span class="label">Robotics</span>
+          <span class="pill research">Research</span>
+        </div>
+        <h3>Maintainable Android Architecture</h3>
+        <p class="summary">Layered artificial muscle ensembles, three-tier federated power, hardware-enforced safety interrupts. Engineered for predictable service life over self-repair complexity.</p>
+        <div class="specs">
+          <span>Ensemble actuation</span>
+          <span>HW safety interrupts</span>
+          <span>3-tier power</span>
+          <span>Field-replaceable</span>
+        </div>
+        <div class="links"><a href="projects/android-robotics.html">Brief →</a><a href="docs/android-robotics-overview.pdf">Specs ↓</a><a href="docs/Android_Robot_Summary.pdf">Summary ↓</a></div>
+      </article>
+
+      <article class="card">
+        <div class="row1">
+          <span class="label">Life Support</span>
+          <span class="pill research">Research</span>
+        </div>
+        <h3>Bioregenerative Habitat</h3>
+        <p class="summary">Life support for a 25-person crew. Rice cylinders operated out-of-phase provide steady oxygen exchange. Predictability and redundancy over theoretical efficiency.</p>
+        <div class="specs">
+          <span><b>25</b> crew</span>
+          <span>Rice as O₂ engine</span>
+          <span>Materials cycling</span>
+          <span>"Boring = safe"</span>
+        </div>
+        <div class="links"><a href="projects/bioregenerative-habitat.html">Brief →</a><a href="docs/Bioregenerative_Habitat_Summary.pdf">Summary ↓</a><a href="docs/Bioregenerative_Habitat_Detailed.pdf">Paper ↓</a></div>
+      </article>
+
+      <article class="card">
+        <div class="row1">
+          <span class="label">Adaptive Learning</span>
+          <span class="pill proto">Prototyped</span>
+        </div>
+        <h3>Mastery-Based Education Platform</h3>
+        <p class="summary">K-12 homeschool, secondary, and adult learning. Validates mastery through empirical retention testing at spaced intervals. Multiple pedagogical pathways.</p>
+        <div class="specs">
+          <span><b>~3.7M</b> homeschool students</span>
+          <span>Spaced retention</span>
+          <span>Style-adaptive</span>
+          <span>K-12 + adult</span>
+        </div>
+        <div class="links"><a href="projects/adaptive-learning.html">Brief →</a><a href="docs/adaptive-learning-platform.pdf">Paper ↓</a></div>
+      </article>
+
+      <article class="card">
+        <div class="row1">
+          <span class="label">Cognitive Optimization</span>
+          <span class="pill proto">Prototyped</span>
+        </div>
+        <h3>Mental Performance Training</h3>
+        <p class="summary">Neuroscience-based system for cognitive autonomy and sustained focus. Structured progression through attention training, emotional regulation, metacognition.</p>
+        <div class="specs">
+          <span>TAS-20 gating</span>
+          <span>On-device Whisper</span>
+          <span>Local-first data</span>
+          <span>Empirical gates</span>
+        </div>
+        <div class="links"><a href="projects/mental-performance.html">Brief →</a><a href="docs/mental-performance-training.pdf">Paper ↓</a></div>
+      </article>
+
+      <article class="card">
+        <div class="row1">
+          <span class="label">Instrument Design</span>
+          <span class="pill research">Research</span>
+        </div>
+        <h3>Bowed Piano</h3>
+        <p class="summary">Electromechanical keyboard. Reciprocating bow actuators replace hammers. Spool-fed rosined ribbon, three independent bow positions per string.</p>
+        <div class="specs">
+          <span>Sustained tone</span>
+          <span>3 bow positions</span>
+          <span>Keyboard immediacy</span>
+          <span>Bowed-string timbre</span>
+        </div>
+        <div class="links"><a href="projects/bowed-piano.html">Brief →</a><a href="docs/Bowed_Piano_Summary.pdf">Summary ↓</a><a href="docs/Bowed_Piano_Detailed.pdf">Paper ↓</a></div>
+      </article>
+
+      <article class="card">
+        <div class="row1">
+          <span class="label">Fusion Energy</span>
+          <span class="pill research">Research</span>
+        </div>
+        <h3>Magnetic Confinement Design</h3>
+        <p class="summary">Novel magnetic field topologies for compact, steady-state fusion reactors. Alternative confinement geometries that challenge tokamak constraints.</p>
+        <div class="specs">
+          <span>Compact geometry</span>
+          <span>Steady-state</span>
+          <span>Non-tokamak</span>
+          <span>Systematic search</span>
+        </div>
+        <div class="links"><a href="projects/magnetic-confinement.html">Brief →</a><a href="docs/fusion-energy-research.pdf">Paper ↓</a></div>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">03 / Reading</span>
+      <h2>Observation as <em>method</em>.</h2>
+      <p class="lede">Long-form essays on cultural and social patterns, and speculative first-principles notes on foundational physics. Diagnostic rather than prescriptive.</p>
+    </div>
+  </div>
+
+  <section class="wrap reading">
+    <div>
+      <h3>Observations</h3>
+      <div class="item">
+        <a class="ttl" href="observations/the-hollowing.html">The Hollowing</a>
+        <span class="when">2026</span>
+        <p class="blurb">On the slow draining of public-facing competence and what replaced it.</p>
+      </div>
+      <div class="item">
+        <a class="ttl" href="observations/the-architecture-of-home.html">The Architecture of Home</a>
+        <span class="when">2026</span>
+        <p class="blurb">How floor plans encode the economic assumptions of the era that built them.</p>
+      </div>
+      <div class="item">
+        <a class="ttl" href="observations/the-private-island.html">The Private Island</a>
+        <span class="when">2026</span>
+        <p class="blurb">The social geometry of total optionality, and what it does to obligation.</p>
+      </div>
+    </div>
+    <div>
+      <h3>Theoretical Notes</h3>
+      <div class="item">
+        <a class="ttl" href="docs/translational-symmetry.pdf">Examining the Foundations of Translational Symmetry via Observable Invariance</a>
+        <span class="when">PDF</span>
+        <p class="blurb">A diagnostic re-examination of an assumption that usually goes unchallenged.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">04 / Approach</span>
+      <h2>Three principles, with <em>receipts</em>.</h2>
+      <p class="lede">Each principle names the projects above that demonstrate it. Receipts, not slogans.</p>
+    </div>
+  </div>
+
+  <section class="wrap approach">
+    <div class="grid">
+      <div class="principle">
+        <div class="num">01</div>
+        <h4>Question inherited constraints.</h4>
+        <p>Many boundaries are artifacts of historical convenience, not natural limits. We identify and remove the ones that prevent genuine progress.</p>
+        <p class="seen">Seen in: <a href="projects/tfops.html">TFOPS</a> · <a href="projects/asteroid-mining.html">Asteroid Mining</a> · <a href="projects/bowed-piano.html">Bowed Piano</a></p>
+      </div>
+      <div class="principle">
+        <div class="num">02</div>
+        <h4>Design conditions, not outcomes.</h4>
+        <p>Mastery, capability, and breakthrough cannot be forced. We engineer the environment in which they emerge naturally through proper cultivation.</p>
+        <p class="seen">Seen in: <a href="projects/adaptive-learning.html">Education Platform</a> · <a href="projects/mental-performance.html">Mental Performance</a> · <a href="projects/sub-lunar-colony.html">Sub-Lunar Colony</a></p>
+      </div>
+      <div class="principle">
+        <div class="num">03</div>
+        <h4>Validate empirically.</h4>
+        <p>Claims require evidence. Whether in retention, plasma confinement, or fiber throughput — progression must be measured and verified, not assumed.</p>
+        <p class="seen">Seen in: <a href="projects/adaptive-learning.html">Education Platform</a> · <a href="projects/fiber-processing.html">Fiber Processing</a> · <a href="projects/magnetic-confinement.html">Magnetic Confinement</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap contact">
+    <h3>Let's build systems that enable <em>real progress</em>.</h3>
+    <a class="email" href="mailto:justin@cultivatedprogression.com">Contact the Creator</a>
+  </section>
+
+  <footer class="wrap site-foot">
+    <span>© 2026 Cultivated Progression</span>
+    <span>Las Vegas, NV</span>
+  </footer>
+
 </body>
 </html>

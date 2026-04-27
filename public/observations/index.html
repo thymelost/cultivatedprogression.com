@@ -1,326 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Observations — Cultivated Progression</title>
-    <meta name="description" content="Long-form essays on cultural and social patterns — observation as method, diagnosis without prescription.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #151515;
-            --text-primary: #e8e8e8;
-            --text-secondary: #999;
-            --accent: #d4af37;
-            --accent-dim: #8b7728;
-            --border: #2a2a2a;
-        }
-
-        body {
-            font-family: 'Newsreader', Georgia, serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(ellipse at 20% 30%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
-                        radial-gradient(ellipse at 80% 70%, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
-            animation: drift 30s ease-in-out infinite;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        @keyframes drift {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(5%, -5%) rotate(2deg); }
-            66% { transform: translate(-5%, 5%) rotate(-2deg); }
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        header {
-            padding: 3rem 0 2rem;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .logo {
-            font-size: 1.1rem;
-            font-weight: 500;
-            letter-spacing: 0.02em;
-            color: var(--accent);
-            font-family: 'JetBrains Mono', monospace;
-            text-decoration: none;
-        }
-
-        .hero {
-            padding: 2rem 0 2rem;
-        }
-
-        /* Primary nav */
-        .primary-nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2.5rem;
-            margin: 0 0 3rem;
-            padding: 1rem 0;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .primary-nav + .listing {
-            margin-top: 0;
-        }
-
-        .nav-link {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-            color: var(--text-secondary);
-            text-decoration: none;
-            padding: 0.25rem 0;
-            transition: color 0.3s ease;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: -0.25rem;
-            height: 1px;
-            background: var(--accent);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .nav-link:hover { color: var(--accent); }
-        .nav-link:hover::after { transform: scaleX(1); }
-        .nav-link.is-current { color: var(--accent); }
-        .nav-link.is-current::after { transform: scaleX(1); }
-
-        .nav-tooltip {
-            position: absolute;
-            top: calc(100% + 0.75rem);
-            left: 0;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 2px;
-            padding: 0.85rem 1.1rem;
-            font-family: 'Newsreader', Georgia, serif;
-            font-size: 0.95rem;
-            text-transform: none;
-            letter-spacing: normal;
-            color: var(--text-secondary);
-            line-height: 1.5;
-            max-width: 22rem;
-            min-width: 16rem;
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(-4px);
-            transition: opacity 0.2s ease, transform 0.2s ease;
-            z-index: 10;
-        }
-
-        .nav-tooltip::before {
-            content: '';
-            position: absolute;
-            top: -1px;
-            left: 1.25rem;
-            width: 8px;
-            height: 8px;
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-            border-left: 1px solid var(--border);
-            transform: translateY(-50%) rotate(45deg);
-        }
-
-        .nav-link:hover .nav-tooltip,
-        .nav-link:focus .nav-tooltip {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @media (max-width: 600px) {
-            .primary-nav { gap: 1.5rem; }
-            .nav-tooltip { display: none; }
-        }
-
-        h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 400;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            font-style: italic;
-        }
-
-        .lede {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            max-width: 42rem;
-            line-height: 1.7;
-        }
-
-        .listing {
-            border-top: 1px solid var(--border);
-            margin-bottom: 6rem;
-        }
-
-        .item {
-            padding: 3rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .item:hover {
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.02), transparent);
-        }
-
-        .item-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--accent-dim);
-            margin-bottom: 1rem;
-        }
-
-        .item h2 {
-            font-size: 1.75rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .item p {
-            color: var(--text-secondary);
-            max-width: 38rem;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .read-link {
-            display: inline-block;
-            margin-top: 0.5rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--accent);
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--accent-dim);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .read-link:hover {
-            background: rgba(212, 175, 55, 0.1);
-            border-color: var(--accent);
-            transform: translateX(4px);
-        }
-
-        footer {
-            padding: 3rem 0;
-            border-top: 1px solid var(--border);
-            margin-top: 4rem;
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        @media (max-width: 768px) {
-            .container { padding: 0 1.5rem; }
-            h1 { font-size: 2.5rem; }
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Observations — Cultivated Progression</title>
+<meta name="description" content="Long-form essays on cultural and social patterns. Observation as method, diagnosis without prescription." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../site.css" />
 </head>
 <body>
-    <div class="container">
-        <header>
-            <a href="/" class="logo">CULTIVATED PROGRESSION</a>
-        </header>
 
-        <section class="hero">
-            <h1>Observations</h1>
-            <p class="lede">
-                Long-form essays on cultural and social patterns. Observation as method — diagnosis without prescription, in the recognition that naming what is happening is a separate operation from fixing it, and that a culture without accurate diagnostic vocabulary loses the option of repair regardless of circumstances.
-            </p>
-        </section>
-
-        <nav class="primary-nav" aria-label="Primary">
-            <a href="/" class="nav-link">
-                Projects
-                <span class="nav-tooltip">Engineering systems and applied research — adaptive learning, robotics, ore processing, fusion, lunar habitation, and more.</span>
-            </a>
-            <a href="/observations/" class="nav-link is-current" aria-current="page">
-                Observations
-                <span class="nav-tooltip">Long-form essays on cultural and social patterns. Observation as method, diagnosis without prescription.</span>
-            </a>
-            <a href="/theoretical-notes/" class="nav-link">
-                Theoretical Notes
-                <span class="nav-tooltip">Speculative first-principles papers on foundational physics. Diagnostic rather than prescriptive.</span>
-            </a>
-        </nav>
-
-        <section class="listing">
-            <div class="item">
-                <div class="item-label">Essay</div>
-                <h2>The Private Island</h2>
-                <p>
-                    A century of fiction about hunting humans — from <em>The Most Dangerous Game</em> to <em>John Wick</em> — encodes a real diagnosis of how concentrated power behaves when it runs out of legitimate appetites. The essay traces the pattern from genre saturation through the cover stories of state secrecy, the construction of parallel agencies built specifically to escape constitutional constraints, the closure of exit, the inversion of the oath, the rhetorical expansion of treason, and the grammatical drift from <em>these United States</em> to <em>the United States</em>. The work is to keep the vocabulary available, so the framework remains exercisable.
-                </p>
-                <a href="the-private-island.html" class="read-link">Read →</a>
-            </div>
-
-            <div class="item">
-                <div class="item-label">Essay</div>
-                <h2>The Hollowing</h2>
-                <p>
-                    How modern cultural mechanisms quietly dismantle the social technologies that hold civilizations together. An extended diagnosis spanning manipulative advertising, the loss of the repair conversation, the collapse of approach norms, class insulation, the influencer layer, the hollowing of the marriage vow, and the discourse defenses that prevent any of this from being recognized. The work is to keep the problems describable, so that fixing them remains possible.
-                </p>
-                <a href="the-hollowing.html" class="read-link">Read →</a>
-            </div>
-
-            <div class="item">
-                <div class="item-label">Essay</div>
-                <h2>The Architecture of Home</h2>
-                <p>
-                    The origin, strength, and unraveling of the traditional family structure. An examination of household roles not as a relic of oppression but as a finely tuned solution to the problem of human survival — and an account of how industrialization hollowed the most skilled components of the domestic vocation while leaving its identity weight intact, producing the unresolvable household friction so many couples now live inside without vocabulary for what they are experiencing.
-                </p>
-                <a href="the-architecture-of-home.html" class="read-link">Read →</a>
-            </div>
-        </section>
-
-        <footer>
-            &copy; 2026 Cultivated Progression. Las Vegas, NV.
-        </footer>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="../index.html">Cultivated Progression</a>
+      <nav>
+        <a href="../index.html">Projects</a>
+        <a href="../observations/" class="is-current">Observations</a>
+        <a href="../theoretical-notes/">Theoretical Notes</a>
+        <a href="../about.html">About</a>
+      </nav>
+      <span class="stamp">Las Vegas · 2026</span>
     </div>
+  </div>
+
+  <section class="wrap essay-hero">
+    <div class="kicker">Observations</div>
+    <h1>Diagnosis, not <em>prescription</em>.</h1>
+    <p class="deck">Long-form essays on cultural and social patterns. Each one tries to name something that is happening, in language precise enough that a reader can decide for themselves whether the description is accurate. None of them tell anyone what to do.</p>
+    <div class="meta">
+      <span>3 essays</span>
+      <span>Updated 2026</span>
+    </div>
+  </section>
+
+  <section class="wrap index-list">
+    <article class="index-item">
+      <div>
+        <h2><a href="the-private-island.html">The Private Island</a></h2>
+        <p>How a century of fiction about hunting humans diagnoses how concentrated power behaves — and how the constitutional vocabulary that once constrained it has been hollowed without being repealed.</p>
+        <a class="read" href="the-private-island.html">Read essay →</a>
+      </div>
+      <div class="meta">
+        <span><b>2026</b></span>
+        <span>Essay · Long-form</span>
+        <span>Power · Constitution</span>
+      </div>
+    </article>
+
+    <article class="index-item">
+      <div>
+        <h2><a href="the-hollowing.html">The Hollowing</a></h2>
+        <p>On the slow draining of public-facing competence and what replaced it. A diagnosis of why institutions that look intact often no longer perform the functions their forms still suggest.</p>
+        <a class="read" href="the-hollowing.html">Read essay →</a>
+      </div>
+      <div class="meta">
+        <span><b>2026</b></span>
+        <span>Essay · Long-form</span>
+        <span>Institutions</span>
+      </div>
+    </article>
+
+    <article class="index-item">
+      <div>
+        <h2><a href="the-architecture-of-home.html">The Architecture of Home</a></h2>
+        <p>How floor plans encode the economic and social assumptions of the era that built them, and what the houses we keep building say about the era we are now in.</p>
+        <a class="read" href="the-architecture-of-home.html">Read essay →</a>
+      </div>
+      <div class="meta">
+        <span><b>2026</b></span>
+        <span>Essay · Long-form</span>
+        <span>Architecture · Economics</span>
+      </div>
+    </article>
+  </section>
+
+  <footer class="wrap site-foot">
+    <span>© 2026 Cultivated Progression</span>
+    <span>Las Vegas, NV</span>
+  </footer>
 </body>
 </html>
