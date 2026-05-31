@@ -60,8 +60,8 @@ Bowed piano — electromechanical keyboard instrument that replaces hammers with
 - `docs/Bowed_Piano_Detailed.pdf`
 
 ### Fusion Energy
-Research into novel magnetic confinement topologies for compact, steady-state fusion reactors.
-- `docs/fusion-energy-research.pdf`
+Research into novel magnetic confinement topologies. The open-mirror line (V1–V8, plus a V10 collider variant) is disproven; the active line is a field-reversed configuration under hybrid-MHD tilt-stability validation.
+- `docs/magnetic-confinement-detailed.pdf` — full research history & status
 
 ## Observations
 

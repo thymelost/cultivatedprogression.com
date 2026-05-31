@@ -31,33 +31,30 @@
   </section>
   <section class="wrap">
     <div class="proj-meta">
-      <div><span class="k">Status</span><span class="v">Research</span></div>
+      <div><span class="k">Status</span><span class="v">Active research</span></div>
       <div><span class="k">Domain</span><span class="v">Fusion Energy</span></div>
-      <div><span class="k">Stage</span><span class="v">Theoretical investigation</span></div>
-      <div><span class="k">Documentation</span><span class="v">1 document</span></div>
+      <div><span class="k">Result to date</span><span class="v">Open mirror disproven; FRC under validation</span></div>
+      <div><span class="k">Documentation</span><span class="v">Full history (PDF)</span></div>
     </div>
   </section>
   <section class="wrap proj-grid">
     <aside class="toc">
       <div class="ttl">On this page</div>
       <a href="#problem">Problem</a>
-      <a href="#approach">Approach</a>
-      <a href="#areas">Investigation areas</a>
-      <a href="#specs">Specs</a>
+      <a href="#history">Program history</a>
+      <a href="#why">Why the mirror fails</a>
+      <a href="#frc">Current line — FRC</a>
       <a href="#status">Status</a>
-      <a href="#downloads">Downloads</a>
+      <a href="#downloads">Documentation</a>
     </aside>
     <div class="proj-body">
       <section id="problem"><h2>Problem.</h2><p>Tokamaks dominate fusion research due to their demonstrated plasma stability, but they inherit fundamental limitations: large physical scale required for adequate confinement time, complex superconducting magnet systems, pulsed operation requiring periodic shutdown for current drive, and geometric constraints that make maintenance access difficult. The dominant question is not <em>how do we optimize the tokamak</em> but <em>which of these constraints are fundamental physics, and which are artifacts of historical development</em>.</p></section>
-      <section id="approach"><h2>Approach.</h2><p>First-principles analysis of magnetic field topology requirements for stable plasma confinement. Rather than starting from existing reactor designs and optimizing parameters, the approach begins with the physics constraints (pressure balance, MHD stability criteria, particle and energy confinement) and systematically explores what field geometries satisfy those constraints.</p></section>
-      <section id="areas"><h2>Investigation areas.</h2><ul class="bullets">
-        <li><b>Steady-state field configurations</b> — eliminating pulsed operation and the need for current drive systems.</li>
-        <li><b>Compact confinement geometries</b> — reducing reactor scale while maintaining adequate confinement time.</li>
-        <li><b>Alternative coil topologies</b> — simplifying magnet systems and improving maintenance access.</li>
-      </ul></section>
-      <section id="specs"><h2>Specifications.</h2><table class="specs-table"><thead><tr><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td>Mode</td><td>Theoretical / first-principles</td></tr><tr><td>Targets</td><td>Steady-state, compact, maintainable</td></tr><tr><td>Method</td><td>Constraint-first topology search</td></tr></tbody></table></section>
-      <section id="status"><h2>Status.</h2><p>Active theoretical investigation. Constraint formulation complete; topology search in progress. Output is paper-form rather than prototype at this stage.</p></section>
-      <section id="downloads"><h2>Documentation.</h2><div class="downloads"><a href="../docs/fusion-energy-research.pdf">Paper ↓</a></div></section>
+      <section id="approach"><h2>Approach.</h2><p>Constraint-first and simulation-validated. Rather than starting from an existing reactor and tuning parameters, each configuration begins from the physics constraints — pressure balance, MHD stability, particle and energy confinement — and asks what field geometry satisfies them. A single test-particle and collisional engine (Boris pusher, binary-collision and Bosch–Hale fusion operators, GPU-accelerated) is carried across every configuration, so results are directly comparable between versions.</p></section>
+      <section id="history"><h2>Program history.</h2><p>The work proceeds by numbered configurations, each retained only as long as it survives the physics. The first six (V1–V6) were magnetic mirrors of increasing sophistication — dynamic three-coil bottles, rotating and compression variants, and a nine-coil graduated end-plug design that confined ions well but did not break even once realistic collisions were included. V7 raised the field with thick-REBCO coils; in deuterium its energy gain plateaus near Q ≈ 0.15 — the classic end-loss limit of open mirrors — and the only stable operating points do not confine. V8 attempted a minimum-B (Yin-Yang) geometry that is stable by construction, and was stopped by the conductor: the three-dimensional saddle coil cannot be wound from coated tape without exceeding its mechanical strain limit several-fold. A counter-rotating collider variant (V10) was also tried and closed — the beams deflected into the chamber walls rather than recirculating.</p><p>Every configuration that relied on a magnetic mirror is now closed. The active line abandons the mirror entirely.</p></section>
+      <section id="why"><h2>Why the mirror fails.</h2><p>The reasons separate cleanly, and only one is fixable. The loss cone is <em>topological</em> — an open mirror leaks ions through a fixed region of velocity space regardless of field strength, stability, or build quality. As a consequence a simple mirror is capped near an energy gain of Q ≈ 1 even ignoring engineering; an independent estimate for the best stable high-β minimum-B mirror this program could build lands at a deuterium-tritium gain of roughly 0.2–0.5. Minimum-B stabilization, which would at least make the device stable, is not buildable with present conductor. And direct energy conversion — recovering the escaping ions' energy at 70–85% — improves the plant balance but does nothing to confinement; it cannot rescue a device whose physics gain sits below one.</p></section>
+      <section id="frc"><h2>Current line — field-reversed configuration.</h2><p>The pivot is to a closed-field-line topology. A field-reversed configuration has no loss cone — the topological leak that caps every open mirror simply does not exist — which is the real reason to leave the mirror behind. A full reactor design exists on paper, with rotating-field current drive, auxiliary heating, and direct energy conversion of the axial exhaust. It is gated, not validated: the classical tilt mode grows far faster than the target confinement time unless fast-ion stabilization suppresses it, and whether it does is the question the program now turns on.</p></section>
+      <section id="status"><h2>Status.</h2><p>A three-dimensional hybrid simulator — fluid MHD coupled to a kinetic treatment of the fast ions — was built to answer that one question: does the configuration survive the tilt mode at the design point. The simulator is sound as engineering — GPU-accelerated, unit-tested, stable for long runs. The physics question remains open: the benchmark validation against the standard reference case does not yet return a measurable growth rate, so no stability verdict has been produced. That validation is the single blocking item; the design proceeds no further until it passes.</p></section>
+      <section id="downloads"><h2>Documentation.</h2><div class="downloads"><a href="../docs/magnetic-confinement-detailed.pdf">Research history &amp; status ↓</a></div></section>
       <div class="related"><h4>Related</h4><div class="related-grid"><a href="tfops.html"><span class="l">Process design</span><span class="t">TFOPS</span></a></div></div>
     </div>
   </section>
