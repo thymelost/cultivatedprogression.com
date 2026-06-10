@@ -1,0 +1,55 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d4af37"/>
+    </marker>
+    <linearGradient id="vign" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0c0c0c"/>
+      <stop offset="1" stop-color="#070707"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="1200" height="630" fill="url(#vign)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="#d4af37"/>
+
+  <!-- top label row -->
+  <text x="64" y="72" font-family="JetBrains Mono" font-size="19" letter-spacing="4" fill="#d4af37">CULTIVATED PROGRESSION</text>
+  <text x="1136" y="72" text-anchor="end" font-family="JetBrains Mono" font-size="17" letter-spacing="3" fill="#5a5a5a">LAS VEGAS · 2026</text>
+
+  <!-- headline (60px, measured to fit within x=64..1136) -->
+  <text x="64" y="178" font-family="Newsreader" font-weight="500" font-size="60" fill="#ececec">Systems redesigned where the</text>
+  <text x="64" y="250" font-family="Newsreader" font-weight="500" font-size="60" fill="#ececec"><tspan font-style="italic" fill="#d4af37">inherited boundaries</tspan> no longer apply.</text>
+
+  <!-- deck -->
+  <text x="64" y="306" font-family="Newsreader" font-size="26" fill="#b8b8b8">Engineering · Observation · First-Principles Inquiry</text>
+
+  <!-- mini system map: drill -> (asteroid, lunar), fully inside 630h -->
+  <g>
+    <!-- core -->
+    <g transform="translate(600 400)">
+      <rect x="-150" y="-30" width="300" height="60" fill="#0a0a0a" stroke="#d4af37" stroke-width="1.5"/>
+      <text x="0" y="-6" text-anchor="middle" font-family="JetBrains Mono" font-size="13" letter-spacing="2" fill="#d4af37">CORE TECHNOLOGY</text>
+      <text x="0" y="17" text-anchor="middle" font-family="JetBrains Mono" font-size="15" fill="#ececec">Plasma Laser Drill</text>
+    </g>
+    <!-- left: extraction -->
+    <g transform="translate(255 520)">
+      <rect x="-150" y="-28" width="300" height="56" fill="#0a0a0a" stroke="#3a3a3a"/>
+      <text x="0" y="-5" text-anchor="middle" font-family="JetBrains Mono" font-size="12" letter-spacing="2" fill="#888">EXTRACTION · SPACE</text>
+      <text x="0" y="16" text-anchor="middle" font-family="JetBrains Mono" font-size="14" fill="#c0c0c0">Asteroid Mining</text>
+    </g>
+    <!-- right: excavation -->
+    <g transform="translate(945 520)">
+      <rect x="-150" y="-28" width="300" height="56" fill="#0a0a0a" stroke="#3a3a3a"/>
+      <text x="0" y="-5" text-anchor="middle" font-family="JetBrains Mono" font-size="12" letter-spacing="2" fill="#888">EXCAVATION · LUNAR</text>
+      <text x="0" y="16" text-anchor="middle" font-family="JetBrains Mono" font-size="14" fill="#c0c0c0">Sub-Lunar Colony</text>
+    </g>
+    <!-- arrows from core down to both -->
+    <path d="M 475 412 Q 340 462 300 488" fill="none" stroke="#d4af37" stroke-width="1.4" marker-end="url(#arrow)"/>
+    <path d="M 725 412 Q 860 462 900 488" fill="none" stroke="#d4af37" stroke-width="1.4" marker-end="url(#arrow)"/>
+  </g>
+</svg>
